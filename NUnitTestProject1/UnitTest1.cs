@@ -14,7 +14,12 @@ namespace Tests
         [Test]
         public void Test1()
         {
-            Inimigos inimigo = new Inimigos();
+            var inimigo = new Inimigos();
+            inimigo.Vida = 100;
+            inimigo.Velo = 0;
+            inimigo.Def = 100;
+            inimigo.ReceberDano(125, 1, false);
+
             Assert.Pass();
         }
     }
