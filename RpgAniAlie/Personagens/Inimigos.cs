@@ -4,12 +4,8 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    class Inimigos : Personagem
+    public class Inimigos : Personagem
     {
-        public override int Atacar()
-        {
-            throw new NotImplementedException();
-        }
 
         public override float Crítico()
         {
@@ -27,23 +23,25 @@ namespace RpgAniAlie.Personagens
 
         }
 
-        public override int Esquivar(int VeloAtk)
+        public override bool Esquivar(int VeloAtk)
         {
             if (this.Velo > VeloAtk)
             {
-                return (this.Velo - VeloAtk) ;
+                Random randNum = new Random();
+                int x = randNum.Next(0, 101);
+                if (this.Velo - VeloAtk <= x) return (true);
+                else return false;
             }
             else
             {
-                return 0;
+                return false;
             } 
         }
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
-            Random randNum = new Random();
-            int x = randNum.Next(0, 101);
-            if (Esquivar(VeloAtk) <= x )
+           
+            if (Esquivar(VeloAtk))
             {
                 if (AtaCrit)
                 {
@@ -51,6 +49,7 @@ namespace RpgAniAlie.Personagens
                 }
                 else
                 {
+                    Random randNum = new Random();
                     float aux = randNum.Next(84, 121);
 
                     aux /= 100;
@@ -65,6 +64,11 @@ namespace RpgAniAlie.Personagens
                 return 0;
                     
             }
+
+        }
+
+        public Inimigos()
+        {
 
         }
     }

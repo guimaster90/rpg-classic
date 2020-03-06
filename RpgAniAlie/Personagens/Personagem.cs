@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RpgAniAlie
 {
-    abstract class Personagem
+    public abstract class Personagem
     {
         public string Nome { get; set; }
         public int Vida { get; set; }
@@ -24,11 +24,7 @@ namespace RpgAniAlie
         /// <returns></returns>
         abstract public float Crítico();
 
-        /// <summary>
-        /// Irá realizar o ataque basico do personagem
-        /// </summary>
-        /// <returns></returns>
-        abstract public int Atacar();
+
 
         /// <summary>
         /// Irá  o calculo da defesa do personagem
@@ -41,7 +37,8 @@ namespace RpgAniAlie
         ///Irá verificar se o personagem esquivou ou não 
         /// </summary>
         /// <returns></returns>
-        abstract public int Esquivar(int VeloAtk);
+        abstract public bool Esquivar(int VeloAtk);
+
 
          public void ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {

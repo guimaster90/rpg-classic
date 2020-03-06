@@ -4,12 +4,9 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    class Aliados : Personagem
+    public class Aliados : Personagem
     {
-        public override int Atacar()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public override float Crítico()
         {
@@ -21,7 +18,7 @@ namespace RpgAniAlie.Personagens
             throw new NotImplementedException();
         }
 
-        public override int Esquivar(int VeloAtk)
+        public override bool Esquivar(int VeloAtk)
         {
             throw new NotImplementedException();
         }
