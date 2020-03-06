@@ -6,16 +6,28 @@ namespace RpgAniAlie.Personagens
 {
     class Inimigos : Personagem
     {
+        public Inimigos ()
+	{
+            this.Nivel = this.Sorte;
+	}
         public override int Atacar()
         {
             throw new NotImplementedException();
         }
 
-        public override float Crítico()
+        public override bool ChecarCritico()
         {
-            throw new NotImplementedException();
+                
+            Random randNum = new Random();
+            int x = randNum.Next(0, 198);
+            if (x <= this.Sorte){
+               return this.Critico = true;
+	        }else{
+               return this.Critico = false;
+            }
         }
 
+        
         public override int Defender(int AtaAtak)
         {
             if (this.Def > AtaAtak)
@@ -31,12 +43,12 @@ namespace RpgAniAlie.Personagens
         {
             if (this.Velo > VeloAtk)
             {
-                return (this.Velo - VeloAtk) ;
+                return (this.Velo - VeloAtk);
             }
             else
             {
                 return 0;
-            } 
+            }
         }
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
