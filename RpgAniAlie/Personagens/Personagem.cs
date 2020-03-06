@@ -16,7 +16,7 @@ namespace RpgAniAlie
         /// <summary>
         /// Irá calcular quando de dano o personagem irá sofrer
         /// </summary>
-        abstract public int ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit);
+        abstract public int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit);
 
         /// <summary>
         /// Irá calcular a chance de critico do personagem
@@ -42,6 +42,11 @@ namespace RpgAniAlie
         /// </summary>
         /// <returns></returns>
         abstract public int Esquivar(int VeloAtk);
+
+         public void ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
+        {
+            this.Vida -= this.CalcularDano(AtaAtak,  VeloAtk,  AtaCrit);
+        }
 
     }
 }

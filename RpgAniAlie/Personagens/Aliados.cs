@@ -26,7 +26,7 @@ namespace RpgAniAlie.Personagens
             throw new NotImplementedException();
         }
 
-        public override int ReceberDano(int AtaAtak, int VeloAtk, bool AtaCrit)
+        public override int CalcularDano(int AtaAtak, int VeloAtk, bool AtaCrit)
         {
             throw new NotImplementedException();
         }

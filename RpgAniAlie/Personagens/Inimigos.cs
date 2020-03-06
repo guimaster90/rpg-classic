@@ -39,18 +39,14 @@ namespace RpgAniAlie.Personagens
             } 
         }
 
-        public override int ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
+        public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 101);
-            Console.WriteLine(x);
-            Console.WriteLine(Esquivar(VeloAtk));
             if (Esquivar(VeloAtk) <= x )
             {
                 if (AtaCrit)
                 {
-                    this.Vida -= Defender(AtaAtak) * 2;
-
                     return Defender(AtaAtak) * 2;
                 }
                 else
@@ -60,10 +56,6 @@ namespace RpgAniAlie.Personagens
                     aux /= 100;
 
                     aux = (float)Defender(AtaAtak) * aux;
-
-                    this.Vida -= (int)aux;
-
-                    Console.WriteLine("A vida que ele deveria perder é de " + (int)aux);
 
                     return (int)aux; 
                 }
