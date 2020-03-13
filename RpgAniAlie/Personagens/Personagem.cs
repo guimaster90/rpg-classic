@@ -12,6 +12,8 @@ namespace RpgAniAlie
         public int Def { get; set; }
         public int Sorte { get; set; }
         public int Velo { get; set; }
+        public int Nivel { get; set; }
+        public bool Critico{get;set;}
 
         /// <summary>
         /// Irá calcular quando de dano o personagem irá sofrer
@@ -22,7 +24,7 @@ namespace RpgAniAlie
         /// Irá calcular a chance de critico do personagem
         /// </summary>
         /// <returns></returns>
-        abstract public float Crítico();
+        abstract public bool ChecarCritico();
 
 
 

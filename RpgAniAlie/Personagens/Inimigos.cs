@@ -4,14 +4,30 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    public class Inimigos : Personagem
+    class Inimigos : Personagem
     {
-
-        public override float Crítico()
+        public Inimigos ()
+	{
+            this.Nivel = this.Sorte;
+	}
+        public override int Atacar()
         {
             throw new NotImplementedException();
         }
 
+        public override bool ChecarCritico()
+        {
+                
+            Random randNum = new Random();
+            int x = randNum.Next(0, 198);
+            if (x <= this.Sorte){
+               return this.Critico = true;
+	        }else{
+               return this.Critico = false;
+            }
+        }
+
+        
         public override int Defender(int AtaAtak)
         {
             if (this.Def > AtaAtak)
@@ -23,25 +39,23 @@ namespace RpgAniAlie.Personagens
 
         }
 
-        public override bool Esquivar(int VeloAtk)
+        public override int Esquivar(int VeloAtk)
         {
             if (this.Velo > VeloAtk)
             {
-                Random randNum = new Random();
-                int x = randNum.Next(0, 101);
-                if (this.Velo - VeloAtk <= x) return (true);
-                else return false;
+                return (this.Velo - VeloAtk);
             }
             else
             {
-                return false;
-            } 
+                return 0;
+            }
         }
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
-           
-            if (Esquivar(VeloAtk))
+            Random randNum = new Random();
+            int x = randNum.Next(0, 101);
+            if (Esquivar(VeloAtk) <= x )
             {
                 if (AtaCrit)
                 {
@@ -49,7 +63,6 @@ namespace RpgAniAlie.Personagens
                 }
                 else
                 {
-                    Random randNum = new Random();
                     float aux = randNum.Next(84, 121);
 
                     aux /= 100;
@@ -64,11 +77,6 @@ namespace RpgAniAlie.Personagens
                 return 0;
                     
             }
-
-        }
-
-        public Inimigos()
-        {
 
         }
     }
