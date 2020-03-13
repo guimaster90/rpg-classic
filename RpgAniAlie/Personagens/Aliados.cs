@@ -1,16 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RpgAniAlie.Equipamento;
 
 namespace RpgAniAlie.Personagens
 {
     public class Aliados : Personagem
     {
-        public bool Equipar()
+        Equip Equips = new Equip();
+        public bool Equipar(Equip Equips)
         {
-            throw new NotImplementedException();
+            if (this.Equips.Equipado == false)
+            {
+                this.Equips.Equipado = true;
+                this.Def += this.Equips.DefesaDoItem;
+                this.Atk += this.Equips.AtaqueItem;
+                this.Velo += this.Equips.VeloAtaqueDoItem;
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("O Item " + this.Equips.NomeDoItem + "já está equipado");
+                return false;
+            }
         }
-       
+
+
 
         public override bool Critico()
         {
