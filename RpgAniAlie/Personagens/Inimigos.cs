@@ -4,33 +4,30 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    class Inimigos : Personagem
+   public class Inimigos : Personagem
     {
-        public Inimigos ()
-	{
-            this.Nivel = this.Sorte;
-	}
-        public override int Atacar()
+        
+        public void AtaqueDeFuria()
         {
-            throw new NotImplementedException();
+
         }
 
-        public override bool ChecarCritico()
+        public override bool Critico()
         {
                 
             Random randNum = new Random();
-            int x = randNum.Next(0, 198);
+            int x = randNum.Next(0, 100);
             if (x <= this.Sorte){
-               return this.Critico = true;
+               return true;
 	        }else{
-               return this.Critico = false;
+               return false;
             }
         }
 
         
         public override int Defender(int AtaAtak)
         {
-            if (this.Def > AtaAtak)
+            if (this.Def >= AtaAtak)
             {
                 return 1;
 
@@ -39,15 +36,28 @@ namespace RpgAniAlie.Personagens
 
         }
 
-        public override int Esquivar(int VeloAtk)
+        public override bool Esquivar(int VeloAtk)
         {
+
             if (this.Velo > VeloAtk)
             {
-                return (this.Velo - VeloAtk);
+                Random randNum = new Random();
+
+                int x = randNum.Next(0, 101);
+
+                if(this.Velo - VeloAtk >= x)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             else
             {
-                return 0;
+                return false;
             }
         }
 
@@ -55,7 +65,7 @@ namespace RpgAniAlie.Personagens
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 101);
-            if (Esquivar(VeloAtk) <= x )
+            if (!Esquivar(VeloAtk))
             {
                 if (AtaCrit)
                 {
@@ -68,8 +78,11 @@ namespace RpgAniAlie.Personagens
                     aux /= 100;
 
                     aux = (float)Defender(AtaAtak) * aux;
-
-                    return (int)aux; 
+                    if(Defender(AtaAtak) == 1)
+  
+                        return 1;
+                    else
+                   return (int)aux; 
                 }
             }
             else

@@ -4,29 +4,25 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    class Aliados : Personagem
+    public class Aliados : Personagem
     {
         public bool Equipar()
         {
             throw new NotImplementedException();
         }
-        public override int Atacar()
-        {
-            throw new NotImplementedException();
-        }
+       
 
-
-        public override bool ChecarCritico()
+        public override bool Critico()
         {
             Random randNum = new Random();
-            int x = randNum.Next(0, 198);//tem que ser balanceado quando tiver feito as armaduras
+            int x = randNum.Next(0, 100);//tem que ser balanceado quando tiver feito as armaduras
             if (x <= this.Sorte)
             {
-                return this.Critico = true;
+                return true;
             }
             else
             {
-                return this.Critico = false;
+                return false;
             }
         }
 
@@ -40,23 +36,17 @@ namespace RpgAniAlie.Personagens
             else return (AtaAtak - this.Def);
         }
 
-        public override int Esquivar(int VeloAtk)
+        public override bool Esquivar(int VeloAtk)
         {
-            if (this.Velo > VeloAtk)
-            {
-                return (this.Velo - VeloAtk);
-            }
-            else
-            {
-                return 0;
-            }
+            return false;
+
         }
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, bool AtaCrit)
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 101);
-            if (Esquivar(VeloAtk) <= x)
+            if (Esquivar(VeloAtk))
             {
                 if (AtaCrit)
                 {

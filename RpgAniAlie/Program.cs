@@ -7,7 +7,7 @@ namespace RpgAniAlie
     {
         static void Main(string[] args)
         {
-            
+          
         }
     }
 }

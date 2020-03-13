@@ -13,7 +13,6 @@ namespace RpgAniAlie
         public int Sorte { get; set; }
         public int Velo { get; set; }
         public int Nivel { get; set; }
-        public bool Critico{get;set;}
 
         /// <summary>
         /// Irá calcular quando de dano o personagem irá sofrer
@@ -21,10 +20,10 @@ namespace RpgAniAlie
         abstract public int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit);
 
         /// <summary>
-        /// Irá calcular a chance de critico do personagem
+        /// Irá se o personagem causou um dano
         /// </summary>
         /// <returns></returns>
-        abstract public bool ChecarCritico();
+        abstract public bool Critico();
 
 
 
@@ -41,7 +40,12 @@ namespace RpgAniAlie
         /// <returns></returns>
         abstract public bool Esquivar(int VeloAtk);
 
-
+        /// <summary>
+        /// Irá dimunuir da vida o dano levado pelo personagem
+        /// </summary>
+        /// <param name="AtaAtak"></param>
+        /// <param name="VeloAtk"></param>
+        /// <param name="AtaCrit"></param>
          public void ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
             this.Vida -= this.CalcularDano(AtaAtak,  VeloAtk,  AtaCrit);
