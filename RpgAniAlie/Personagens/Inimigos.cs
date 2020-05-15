@@ -6,16 +6,28 @@ namespace RpgAniAlie.Personagens
 {
     class Inimigos : Personagem
     {
+        public Inimigos ()
+	{
+            this.Nivel = this.Sorte;
+	}
         public override int Atacar()
         {
             throw new NotImplementedException();
         }
 
-        public override float Crítico()
+        public override bool ChecarCritico()
         {
-            throw new NotImplementedException();
+                
+            Random randNum = new Random();
+            int x = randNum.Next(0, 198);
+            if (x <= this.Sorte){
+               return this.Critico = true;
+	        }else{
+               return this.Critico = false;
+            }
         }
 
+        
         public override int Defender(int AtaAtak)
         {
             if (this.Def > AtaAtak)
@@ -31,26 +43,22 @@ namespace RpgAniAlie.Personagens
         {
             if (this.Velo > VeloAtk)
             {
-                return (this.Velo - VeloAtk) ;
+                return (this.Velo - VeloAtk);
             }
             else
             {
                 return 0;
-            } 
+            }
         }
 
-        public override int ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
+        public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 101);
-            Console.WriteLine(x);
-            Console.WriteLine(Esquivar(VeloAtk));
             if (Esquivar(VeloAtk) <= x )
             {
                 if (AtaCrit)
                 {
-                    this.Vida -= Defender(AtaAtak) * 2;
-
                     return Defender(AtaAtak) * 2;
                 }
                 else
@@ -60,10 +68,6 @@ namespace RpgAniAlie.Personagens
                     aux /= 100;
 
                     aux = (float)Defender(AtaAtak) * aux;
-
-                    this.Vida -= (int)aux;
-
-                    Console.WriteLine("A vida que ele deveria perder é de " + (int)aux);
 
                     return (int)aux; 
                 }
