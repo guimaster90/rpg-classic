@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using RpgAniAlie.Equipamento;
 
@@ -7,6 +9,36 @@ namespace RpgAniAlie.Personagens
 {
     public class Aliados : Personagem
     {
+
+        ArrayList inventario = new ArrayList { };
+        ArrayList CapaceteEquipado = new ArrayList { };
+        ArrayList PeitoralEquipado = new ArrayList { };
+        ArrayList BotasEquipado = new ArrayList { };
+        ArrayList LuvaEquipado = new ArrayList { };
+        ArrayList ColarEquipado = new ArrayList { };
+
+        /*
+        public bool Equipar()
+        {
+            if (CapaceteEquipado.Capacity == 0)
+            {
+                Console.WriteLine("Qual qual a peça de armadura que você quer equipar ");
+                Console.WriteLine("Digite para /n 1-Capacete /n 2-Peitoral /n 3-Botas /n 4-Luvas /n 5-Colar");
+                int escolha = int.Parse(Console.ReadLine());
+                if (escolha == 1)
+                {
+
+
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        */
+
+        /*
         Equip Equips = new Equip();
         public bool Equipar(Equip Equips)
         {
@@ -24,7 +56,7 @@ namespace RpgAniAlie.Personagens
                 return false;
             }
         }
-
+        */
 
 
         public override bool Critico()
