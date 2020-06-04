@@ -1,32 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RpgAniAlie.Equipamento;
 
 namespace RpgAniAlie.Personagens
 {
-    class Aliados : Personagem
+    public class Aliados : Personagem
     {
-        public bool Equipar()
+        Equip Equips = new Equip();
+        public bool Equipar(Equip Equips)
         {
-            throw new NotImplementedException();
-        }
-        public override int Atacar()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public override bool ChecarCritico()
-        {
-            Random randNum = new Random();
-            int x = randNum.Next(0, 198);//tem que ser balanceado quando tiver feito as armaduras
-            if (x <= this.Sorte)
+            if (this.Equips.Equipado == false)
             {
-                return this.Critico = true;
+                this.Equips.Equipado = true;
+                this.Def += this.Equips.DefesaDoItem;
+                this.Atk += this.Equips.AtaqueItem;
+                this.Velo += this.Equips.VeloAtaqueDoItem;
+                return true;
             }
             else
             {
-                return this.Critico = false;
+                Console.WriteLine("O Item " + this.Equips.NomeDoItem + "já está equipado");
+                return false;
+            }
+        }
+
+
+
+        public override bool Critico()
+        {
+            Random randNum = new Random();
+            int x = randNum.Next(0, 100);//tem que ser balanceado quando tiver feito as armaduras
+            if (x <= this.Sorte)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -40,23 +51,17 @@ namespace RpgAniAlie.Personagens
             else return (AtaAtak - this.Def);
         }
 
-        public override int Esquivar(int VeloAtk)
+        public override bool Esquivar(int VeloAtk)
         {
-            if (this.Velo > VeloAtk)
-            {
-                return (this.Velo - VeloAtk);
-            }
-            else
-            {
-                return 0;
-            }
+            return false;
+
         }
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, bool AtaCrit)
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 101);
-            if (Esquivar(VeloAtk) <= x)
+            if (Esquivar(VeloAtk))
             {
                 if (AtaCrit)
                 {
