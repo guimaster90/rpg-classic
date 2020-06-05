@@ -10,6 +10,6 @@ namespace RpgAniAlie.Equipamento
         public int DefesaDoItem { get; set; }
         public int AtaqueItem { get; set; }
         public int VeloAtaqueDoItem { get; set; }
-        public bool Equipado { get; set; }
+       // public bool Equipado { get; set; }
     }
 }

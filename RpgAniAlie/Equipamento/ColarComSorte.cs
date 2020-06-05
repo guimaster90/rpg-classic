@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RpgAniAlie.Equipamento
 {
-    public class ColarComSorte : Equip
+    public class ColarComSorte : Colar
     {
         
 
@@ -12,7 +12,7 @@ namespace RpgAniAlie.Equipamento
         public ColarComSorte(){
  
             this.NomeDoItem = "Sortizinha";
-            // this.Sorte = 20;
+            this.Sorte = 20;
 
         }
 

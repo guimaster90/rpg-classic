@@ -4,13 +4,13 @@ using System.Text;
 
 namespace RpgAniAlie.Equipamento
 {
-    public class ColarDeMuitaSorte : Equip
+    public class ColarDeMuitaSorte : Colar
     {
         
         public ColarDeMuitaSorte(){
           
             this.NomeDoItem = "Agr ja da pra ganhar na Loteria";
-           // this.Sorte = 30;
+            this.Sorte = 30;
         }
 
         

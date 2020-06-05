@@ -4,12 +4,12 @@ using System.Text;
 
 namespace RpgAniAlie.Equipamento
 {
-    public class ColarDePoucaSorte : Equip //Não conseguindo herda Colar
+    public class ColarDePoucaSorte : Colar
     {
         public ColarDePoucaSorte()
         {
            this.NomeDoItem = "Quaze Azarado";
-           //this.Sorte = 10;
+           this.Sorte = 10;
         }
 
         

@@ -9,6 +9,12 @@ namespace RpgAniAlie.Personagens
         public string NomeAtaqueDeFuria { get; set; }
         public int CoolDown { get; set; }
 
+        public int Ataque()
+        {
+            int aux = this.Atk;
+            return aux;
+        }
+
         /// <summary>
         /// Esse é o atauqe de furia padrão, ou seja ele apenas vai causardano extra aos aliado aos aliados
         /// </summary>
