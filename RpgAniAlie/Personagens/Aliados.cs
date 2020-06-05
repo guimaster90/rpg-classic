@@ -16,7 +16,7 @@ namespace RpgAniAlie.Personagens
         ArrayList BotasEquipado = new ArrayList ();
         ArrayList LuvaEquipado = new ArrayList ();
         ArrayList ColarEquipado = new ArrayList ();
-
+        
         public Aliados()
         {
             Capacete CapaceteBasico = new Capacete();

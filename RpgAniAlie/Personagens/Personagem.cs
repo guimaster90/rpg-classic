@@ -18,7 +18,7 @@ namespace RpgAniAlie
         public bool PegandoFogo { get; set; }
         public bool Envenenado { get; set; }
         public bool Sangrando { get; set; }
-
+        
         /// <summary>
         /// Irá calcular quando de dano o personagem irá sofrer
         /// </summary>

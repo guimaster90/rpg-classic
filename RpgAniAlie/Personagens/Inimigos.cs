@@ -18,7 +18,7 @@ namespace RpgAniAlie.Personagens
             double aux = (double)this.Atk * 1.5;
             return (int)aux;
         }
-
+        
         public override bool Critico()
         {
                 
