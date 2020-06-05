@@ -14,7 +14,7 @@ namespace RpgAniAlie.Equipamento
             this.VeloAtaqueDoItem = 0;
             this.DefesaDoItem = 0;
             }
-
+            
         
     }
 }

@@ -10,166 +10,92 @@ namespace RpgAniAlie.Personagens
     public class Aliados : Personagem
     {
 
-        ArrayList inventario = new ArrayList ();
+        ArrayList inventarioCapacete = new ArrayList ();
+        ArrayList inventarioPeitoral = new ArrayList ();
+        ArrayList inventarioBota = new ArrayList ();
+        ArrayList inventarioLuva = new ArrayList ();
+        ArrayList inventarioColar = new ArrayList ();
+        ArrayList inventarioPoção = new ArrayList();
+        ArrayList inventarioMunição = new ArrayList();
         ArrayList CapaceteEquipado = new ArrayList ();
         ArrayList PeitoralEquipado = new ArrayList ();
         ArrayList BotasEquipado = new ArrayList ();
         ArrayList LuvaEquipado = new ArrayList ();
         ArrayList ColarEquipado = new ArrayList ();
-        
-        public Aliados()
-        {
-            Capacete CapaceteBasico = new Capacete();
-            CapaceteBasico.NomeDoItem = "Capacete Lixo";
-            CapaceteBasico.DefesaDoItem = 20;
-            CapaceteBasico.AtaqueItem = 5;
-            CapaceteBasico.VeloAtaqueDoItem = 5;
 
-            Capacete CapaceteDefesa = new Capacete();
-            CapaceteDefesa.NomeDoItem = "Capacete Blindão";
-            CapaceteDefesa.DefesaDoItem = 20;
-            CapaceteDefesa.AtaqueItem = 5;
-            CapaceteDefesa.VeloAtaqueDoItem = 5;
 
-            Capacete CapaceteAtaque = new Capacete();
-            CapaceteAtaque.NomeDoItem = "Capacete da Cabeçada";
-            CapaceteAtaque.DefesaDoItem = 5;
-            CapaceteAtaque.AtaqueItem = 20;
-            CapaceteAtaque.VeloAtaqueDoItem = 5;
 
-            Capacete CapaceteRapido = new Capacete();
-            CapaceteAtaque.NomeDoItem = "Capacete Ligeirinho";
-            CapaceteAtaque.DefesaDoItem = 5;
-            CapaceteAtaque.AtaqueItem = 5;
-            CapaceteAtaque.VeloAtaqueDoItem = 20;
-
-            Peitoral PeitoralBasico = new Peitoral();
-            PeitoralBasico.NomeDoItem = "Peitoral Lixo";
-            PeitoralBasico.DefesaDoItem = 20;
-            PeitoralBasico.AtaqueItem = 5;
-            PeitoralBasico.VeloAtaqueDoItem = 5;
-
-            Peitoral PeitoralDefesa = new Peitoral();
-            PeitoralDefesa.NomeDoItem = "Peitoral Blindão";
-            PeitoralDefesa.DefesaDoItem = 20;
-            PeitoralDefesa.AtaqueItem = 5;
-            PeitoralDefesa.VeloAtaqueDoItem = 5;
-
-            Peitoral PeitoralAtaque = new Peitoral();
-            PeitoralAtaque.NomeDoItem = "Peitoral da Peitada";
-            PeitoralAtaque.DefesaDoItem = 5;
-            PeitoralAtaque.AtaqueItem = 20;
-            PeitoralAtaque.VeloAtaqueDoItem = 5;
-
-            Peitoral PeitoralRapido = new Peitoral();
-            PeitoralRapido.NomeDoItem = "Peitoral Ligeirinho";
-            PeitoralRapido.DefesaDoItem = 5;
-            PeitoralRapido.AtaqueItem = 5;
-            PeitoralRapido.VeloAtaqueDoItem = 20;
-
-            Luva LuvaBasico = new Luva();
-            LuvaBasico.NomeDoItem = "Luva Lixo";
-            LuvaBasico.DefesaDoItem = 20;
-            LuvaBasico.AtaqueItem = 5;
-            LuvaBasico.VeloAtaqueDoItem = 5;
-
-            Luva LuvaDefesa = new Luva();
-            PeitoralDefesa.NomeDoItem = "Luva Blindão";
-            PeitoralDefesa.DefesaDoItem = 20;
-            PeitoralDefesa.AtaqueItem = 5;
-            PeitoralDefesa.VeloAtaqueDoItem = 5;
-
-            Luva LuvaAtaque = new Luva();
-            LuvaAtaque.NomeDoItem = "Luva Porradeira";
-            LuvaAtaque.DefesaDoItem = 5;
-            LuvaAtaque.AtaqueItem = 20;
-            LuvaAtaque.VeloAtaqueDoItem = 5;
-
-            Luva LuvaRapido = new Luva();
-            LuvaRapido.NomeDoItem = "Luva Ligeirinho";
-            LuvaRapido.DefesaDoItem = 5;
-            LuvaRapido.AtaqueItem = 5;
-            LuvaRapido.VeloAtaqueDoItem = 20;
-
-            Bota BotaBasico = new Bota();
-            BotaBasico.NomeDoItem = "Bota Lixo";
-            BotaBasico.DefesaDoItem = 20;
-            BotaBasico.AtaqueItem = 5;
-            BotaBasico.VeloAtaqueDoItem = 5;
-
-            Bota BotaDefesa = new Bota();
-            BotaDefesa.NomeDoItem = "Bota Blindão";
-            BotaDefesa.DefesaDoItem = 20;
-            BotaDefesa.AtaqueItem = 5;
-            BotaDefesa.VeloAtaqueDoItem = 5;
-
-            Bota BotaAtaque = new Bota();
-            BotaAtaque.NomeDoItem = "Bota da Rasteira";
-            BotaAtaque.DefesaDoItem = 5;
-            BotaAtaque.AtaqueItem = 20;
-            BotaAtaque.VeloAtaqueDoItem = 5;
-
-            Bota BotaRapido = new Bota();
-            BotaRapido.NomeDoItem = "Bota Ligeirinho";
-            BotaRapido.DefesaDoItem = 5;
-            BotaRapido.AtaqueItem = 5;
-            BotaRapido.VeloAtaqueDoItem = 20;
-
-            Colar ColarDePoucaSorte = new Colar();
-            ColarDePoucaSorte.NomeDoItem = "Quaze Azarado";
-            ColarDePoucaSorte.Sorte = 10;
-
-            Colar ColarComSorte = new Colar();
-            ColarComSorte.NomeDoItem = "Sortizinha";
-            ColarComSorte.Sorte = 20;
-
-            Colar ColarDeMuitaSorte = new Colar();
-            ColarDeMuitaSorte.NomeDoItem = "Agr ja da pra ganhar na Loteria";
-            ColarDeMuitaSorte.Sorte = 30;
-
+        public bool AdicionarArmaduraLixo(){//usado no começo do jogo
+        inventarioCapacete.Add( new CapaceteBasico());
+        inventarioPeitoral.Add(new PeitoralBasico());
+        inventarioLuva.Add(new LuvaBasico());
+        inventarioBota.Add(new BotaBasico());
+        inventarioColar.Add(new ColarDePoucaSorte());
+        CapaceteEquipado.Add(new CapaceteBasico());
+        PeitoralEquipado.Add(new PeitoralBasico());
+        LuvaEquipado.Add(new LuvaBasico());
+        BotasEquipado.Add(new BotaBasico());
+        ColarEquipado.Add(new ColarDePoucaSorte());
+        return true;
         }
 
-        /*
-        public bool Equipar()
-        {
-            if (CapaceteEquipado.Capacity == 0)
-            {
-                Console.WriteLine("Qual qual a peça de armadura que você quer equipar ");
-                Console.WriteLine("Digite para /n 1-Capacete /n 2-Peitoral /n 3-Botas /n 4-Luvas /n 5-Colar");
-                int escolha = int.Parse(Console.ReadLine());
-                if (escolha == 1)
-                {
-
-
-                }
-            }
-            else
-            {
-                return false;
-            }
+        public bool AdicionarArmaduraBlindona(){//usado em algum bau
+        inventarioCapacete.Add( new CapaceteDefesa());
+        inventarioPeitoral.Add(new PeitoralDefesa());
+        inventarioLuva.Add(new LuvaDefesa());
+        inventarioBota.Add(new BotaDefesa());
+        return true;
         }
-        */
 
-        /*
-        Equip Equips = new Equip();
-        public bool Equipar(Equip Equips)
-        {
-            if (this.Equips.Equipado == false)
-            {
-                this.Equips.Equipado = true;
-                this.Def += this.Equips.DefesaDoItem;
-                this.Atk += this.Equips.AtaqueItem;
-                this.Velo += this.Equips.VeloAtaqueDoItem;
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("O Item " + this.Equips.NomeDoItem + "já está equipado");
-                return false;
-            }
+        public bool AdicionarArmaduraParruda(){//usado em algum bau
+        inventarioCapacete.Add( new CapaceteAtaque());
+        inventarioPeitoral.Add(new PeitoralAtaque());
+        inventarioLuva.Add(new LuvaAtaque());
+        inventarioBota.Add(new BotaAtaque());
+        return true;
         }
-        */
 
+        public bool AdicionarArmaduraLigeirinho(){//usado em algum bau
+        inventarioCapacete.Add( new CapaceteRapido());
+        inventarioPeitoral.Add(new PeitoralRapido());
+        inventarioLuva.Add(new LuvaRapido());
+        inventarioBota.Add(new BotaRapido());
+        return true;
+        }
+        public bool AdicionarColarComSorte(){//usado em algum bau
+        inventarioColar.Add(new ColarComSorte());
+        return true;
+        }
+        public bool AdicionarColoarDeMuitaSorte(){//usado em algum bau
+            inventarioColar.Add(new ColarDeMuitaSorte());
+            return true;
+        }
+
+        public bool EquiparCapacete(Equip Cap){//sera mudado futuramente pra receber um objeto via clickevent
+            CapaceteEquipado.RemoveAt(0);
+            CapaceteEquipado.Add(Cap);
+            return true;
+        }
+        public bool EquiparPeitoral(Equip Peit){//sera mudado futuramente pra receber um objeto via clickevent
+            PeitoralEquipado.RemoveAt(0);
+            PeitoralEquipado.Add(Peit);
+            return true;
+        }
+        public bool EquiparLuva(Equip Luva){//sera mudado futuramente pra receber um objeto via clickevent
+            LuvaEquipado.RemoveAt(0);
+            LuvaEquipado.Add(Luva);
+            return true;
+        }
+        public bool EquiparBota(Equip Bota){//sera mudado futuramente pra receber um objeto via clickevent
+            BotasEquipado.RemoveAt(0);
+            BotasEquipado.Add(Bota);
+            return true;
+        }
+        public bool EquiparColar(Equip Colar) {//sera mudado futuramente pra receber um objeto via clickevent
+            ColarEquipado.RemoveAt(0);
+            ColarEquipado.Add(Colar);
+            return true;
+        }
 
         public override bool Critico()
         {
