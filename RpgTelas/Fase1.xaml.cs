@@ -31,15 +31,190 @@ namespace RpgTelas
 
     public sealed partial class Fase1 : Page
     {
-
-
+        List<UIElement> ColisoesLidar = new List<UIElement>();
+        List<UIElement> ColisoesAdd = new List<UIElement>();
         public Fase1()
         {
             this.InitializeComponent();
-
-
+            this.KeyDown += Fase1_KeyDown;
+            this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
-       
+
+
+
+        public void handleCollisions(double x, double y)
+        {
+            List<UIElement> AllCollidables = Colidiveis.Children.ToList();
+            Rect player = new Rect();
+            player.X = Canvas.GetLeft(ImgCaco);
+            player.Y = Canvas.GetTop(ImgCaco);
+            player.Height = ImgCaco.Height;
+            player.Width = ImgCaco.Width;
+
+
+            foreach (Image item in AllCollidables)
+            {
+                if (item.Visibility == Visibility.Visible)
+                {
+                    Rect obj = new Rect();
+                    obj.X = Canvas.GetLeft(item);
+                    obj.Y = Canvas.GetTop(item);
+                    obj.Height = item.Height;
+                    obj.Width = item.Width;
+
+                    obj.Intersect(player);
+
+                    if (!obj.IsEmpty)
+                    {
+                        ColisoesLidar.Add(item);
+                    }
+                }
+            }
+            foreach (Image item in ColisoesLidar)
+            {
+
+                if (item.Name.ToLower().Contains("bloco"))
+                {
+                    //item.Visibility = Visibility.Collapsed;
+                    if (y != 0)
+                    {
+                        Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + y );
+                    }else if (x != 0){
+                        Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + x);
+                    }
+
+                }
+                if (item.Name.ToLower().Contains("inimigo"))
+                {
+                    item.Visibility = Visibility.Collapsed;
+                    this.Frame.Navigate(typeof(FaseBatalha));
+                }
+            }
+            
+            ColisoesLidar.Clear();
+        }
+        private async void Fase1_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Down)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                     CoreDispatcherPriority.Normal,
+                     Down // O Método a ser chamado
+                );
+            }
+            else if (e.Key == Windows.System.VirtualKey.Up)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                     CoreDispatcherPriority.Normal,
+                     Up // O Método a ser chamado
+                );
+            }
+            else if (e.Key == Windows.System.VirtualKey.Right)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    Right // O Método a ser chamado
+               );
+            }
+            else if (e.Key == Windows.System.VirtualKey.Left)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                     CoreDispatcherPriority.Normal,
+                    Left // O Método a ser chamado
+               );
+            }
+        }
+
+        public async void Down()
+        {
+            int x = 0;
+            // Manipular o componente de Interface
+            while (x < 1)
+            {
+                Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + 5);
+                handleCollisions(0,-5);
+                await Task.Delay(50);
+                x++;
+            }
+        }
+
+        public async void Up()
+        {
+            int cont = 0;
+            // Manipular o componente de Interface
+            while (cont < 1)
+            {
+                
+                Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 5);
+                handleCollisions(0, 5);
+                await Task.Delay(100);
+                cont++;
+            }
+        }
+
+        public async void Right()
+        {
+            int x = 0;
+            // Manipular o componente de Interface
+            while (x < 1)
+            {
+                
+                Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + 5);
+                handleCollisions(-5, 0);
+                await Task.Delay(50);
+                x++;
+            }
+        }
+
+        public async void Left()
+        {
+            int x = 0;
+            // Manipular o componente de Interface
+            while (x < 1)
+            {
+                
+                Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 5);
+                handleCollisions(5, 0);
+                await Task.Delay(50);
+                x++;
+            }
+        }
+
+        /*
+            private async void Fase1_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Down)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                     CoreDispatcherPriority.Normal,
+                     Down // O Método a ser chamado
+                );
+            }
+            else if (e.Key == Windows.System.VirtualKey.Up)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                     CoreDispatcherPriority.Normal,
+                     Up // O Método a ser chamado
+                );
+            }
+            else if (e.Key == Windows.System.VirtualKey.Right)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    Right // O Método a ser chamado
+               );
+            }
+            else if (e.Key == Windows.System.VirtualKey.Left)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                     CoreDispatcherPriority.Normal,
+                    Left // O Método a ser chamado
+               );
+            }
+        }
+
+        
         protected override async void OnKeyUp(KeyRoutedEventArgs e)
         {
             base.OnKeyUp(e);
@@ -73,7 +248,7 @@ namespace RpgTelas
             }
         }
 
-        /*
+        
        private async void Page_KeyDown(object sender, KeyRoutedEventArgs e)
        {
            if (e.Key == Windows.System.VirtualKey.Down)
@@ -106,68 +281,58 @@ namespace RpgTelas
            }
        }
        */
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             // Set the input focus to ensure that keyboard events are raised.
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             Debug.WriteLine("NavigatedTo!");
+
         }
 
-        public async void Down()
+        public async void Movimentacao(double x, double y)
         {
-            int x = 0;
-            // Manipular o componente de Interface
-            while (x < 20)
+            //double aux = Canvas.GetLeft(ImgCaco);
+            //double aux2 = Canvas.GetTop(ImgCaco);
+            while (true)
             {
-                ImgCacoTranslateTransform.Y += 5;
-                //Canvas.SetTop(ImgBestFriend, Canvas.GetTop(ImgBestFriend) + 5);
-                await Task.Delay(50);
-                x++;
+                
+                if (x == Canvas.GetLeft(ImgCaco))
+                {
+                    break;
+                }
+                if (x < Canvas.GetLeft(ImgCaco))
+                {
+
+                    Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 1); 
+                    await Task.Delay(1);
+                }
+                else if (x > Canvas.GetLeft(ImgCaco)) {
+                    Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + 1);
+                    await Task.Delay(1);
+                }
+                
+            }
+
+            while (y != Canvas.GetTop(ImgCaco))
+            {
+                if (y < Canvas.GetTop(ImgCaco))
+                {
+                    Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 1); 
+                    await Task.Delay(1);
+                }
+                else if (y > Canvas.GetTop(ImgCaco))
+                {
+                    Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + 1);
+                    await Task.Delay(1);
+                }
+
             }
         }
+     
 
-        public async void Up()
-        {
-            int cont = 0;
-            // Manipular o componente de Interface
-            while (cont < 20)
-            {
-                ImgCacoTranslateTransform.Y = cont < 10 ? ImgCacoTranslateTransform.Y - 5 : ImgCacoTranslateTransform.Y + 5;
-                // Canvas.SetTop(ImgBestFriend, Canvas.GetTop(ImgBestFriend) - 5);
-                await Task.Delay(100);
-                cont++;
-            }
-        }
-
-        public async void Right()
-        {
-            int x = 0;
-            // Manipular o componente de Interface
-            while (x < 10)
-            {
-                ImgCacoTranslateTransform.X += 5;
-                //Canvas.SetLeft(ImgBestFriend, Canvas.GetLeft(ImgBestFriend) + 5);
-                await Task.Delay(50);
-                x++;
-            }
-        }
-
-        public async void Left()
-        {
-            int x = 0;
-            // Manipular o componente de Interface
-            while (x < 10)
-            {
-                ImgCacoTranslateTransform.X -= 5;
-                //Canvas.SetLeft(ImgBestFriend, Canvas.GetLeft(ImgBestFriend) - 5);
-                await Task.Delay(50);
-                x++;
-            }
-        }
-
-       
-
+        
     }
 }
 

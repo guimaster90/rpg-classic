@@ -119,8 +119,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Colisões.cs" />
     <Compile Include="Fase1.xaml.cs">
       <DependentUpon>Fase1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FaseBatalha.xaml.cs">
+      <DependentUpon>FaseBatalha.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -134,7 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Imagens\BackGround.jpg" />
+    <Content Include="Assets\Imagens\maxresdefault.jpg" />
     <Content Include="Assets\Imagens\Personagens\Aliados\Caco.png" />
+    <Content Include="Assets\Imagens\roxo.jpg" />
     <Content Include="Assets\Imagens\Tela_de_Inicio.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -154,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FaseBatalha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -161,7 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.9</Version>
+      <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Win2D.uwp">
       <Version>1.25.0</Version>
@@ -169,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Imagens\Personagens\Inimigos\" />
-    <Folder Include="Classes\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
