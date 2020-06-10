@@ -123,8 +123,17 @@
     <Compile Include="Fase1.xaml.cs">
       <DependentUpon>Fase1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fase2.xaml.cs">
+      <DependentUpon>Fase2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fase3.xaml.cs">
+      <DependentUpon>Fase3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FaseBatalha.xaml.cs">
       <DependentUpon>FaseBatalha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario.xaml.cs">
+      <DependentUpon>Inventario.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -140,6 +149,7 @@
     <Content Include="Assets\Imagens\BackGround.jpg" />
     <Content Include="Assets\Imagens\maxresdefault.jpg" />
     <Content Include="Assets\Imagens\Personagens\Aliados\Caco.png" />
+    <Content Include="Assets\Imagens\Preto.jpg" />
     <Content Include="Assets\Imagens\roxo.jpg" />
     <Content Include="Assets\Imagens\Tela_de_Inicio.jpg" />
     <Content Include="Properties\Default.rd.xml" />
@@ -160,7 +170,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fase2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fase3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FaseBatalha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

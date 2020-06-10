@@ -1,6 +1,4 @@
-﻿using Microsoft.Graphics.Canvas;
-using Microsoft.Graphics.Canvas.UI.Xaml;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -10,7 +8,6 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -20,7 +17,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace RpgTelas
@@ -28,21 +24,17 @@ namespace RpgTelas
     /// <summary>
     /// Uma página vazia que pode ser usada isoladamente ou navegada dentro de um Quadro.
     /// </summary>
-
-    public sealed partial class Fase1 : Page
+    public sealed partial class Fase3 : Page
     {
         List<UIElement> ColisoesLidar = new List<UIElement>();
         List<UIElement> ColisoesAdd = new List<UIElement>();
-        public Fase1()
+        public Fase3()
         {
             this.InitializeComponent();
             this.KeyDown += Fase_KeyDown;
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
-
-
-
         public void handleCollisions(double x, double y)
         {
             List<UIElement> AllCollidables = Colidiveis.Children.ToList();
@@ -79,8 +71,10 @@ namespace RpgTelas
                     //item.Visibility = Visibility.Collapsed;
                     if (y != 0)
                     {
-                        Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + y );
-                    }else if (x != 0){
+                        Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + y);
+                    }
+                    else if (x != 0)
+                    {
                         Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + x);
                     }
 
@@ -93,10 +87,10 @@ namespace RpgTelas
                 if (item.Name.ToLower().Contains("chefe"))
                 {
                     item.Visibility = Visibility.Collapsed;
-                    this.Frame.Navigate(typeof(Fase2));
+
                 }
             }
-            
+
             ColisoesLidar.Clear();
         }
         private async void Fase_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -138,7 +132,7 @@ namespace RpgTelas
             while (x < 1)
             {
                 Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + 5);
-                handleCollisions(0,-5);
+                handleCollisions(0, -5);
                 await Task.Delay(50);
                 x++;
             }
@@ -150,7 +144,7 @@ namespace RpgTelas
             // Manipular o componente de Interface
             while (cont < 1)
             {
-                
+
                 Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 5);
                 handleCollisions(0, 5);
                 await Task.Delay(100);
@@ -164,7 +158,7 @@ namespace RpgTelas
             // Manipular o componente de Interface
             while (x < 1)
             {
-                
+
                 Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + 5);
                 handleCollisions(-5, 0);
                 await Task.Delay(50);
@@ -178,7 +172,7 @@ namespace RpgTelas
             // Manipular o componente de Interface
             while (x < 1)
             {
-                
+
                 Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 5);
                 handleCollisions(5, 0);
                 await Task.Delay(50);
@@ -186,106 +180,7 @@ namespace RpgTelas
             }
         }
 
-        /*
-            private async void Fase1_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.Down)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                     CoreDispatcherPriority.Normal,
-                     Down // O Método a ser chamado
-                );
-            }
-            else if (e.Key == Windows.System.VirtualKey.Up)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                     CoreDispatcherPriority.Normal,
-                     Up // O Método a ser chamado
-                );
-            }
-            else if (e.Key == Windows.System.VirtualKey.Right)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Right // O Método a ser chamado
-               );
-            }
-            else if (e.Key == Windows.System.VirtualKey.Left)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                     CoreDispatcherPriority.Normal,
-                    Left // O Método a ser chamado
-               );
-            }
-        }
 
-        
-        protected override async void OnKeyUp(KeyRoutedEventArgs e)
-        {
-            base.OnKeyUp(e);
-            if (e.Key == Windows.System.VirtualKey.Down)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Down // O Método a ser chamado
-                );
-            }
-            else if (e.Key == Windows.System.VirtualKey.Up)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Up // O Método a ser chamado
-                );
-            }
-            else if (e.Key == Windows.System.VirtualKey.Right)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Right // O Método a ser chamado
-                );
-            }
-            else if (e.Key == Windows.System.VirtualKey.Left)
-            {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Left // O Método a ser chamado
-                );
-            }
-        }
-
-        
-       private async void Page_KeyDown(object sender, KeyRoutedEventArgs e)
-       {
-           if (e.Key == Windows.System.VirtualKey.Down)
-           {
-               await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Down // O Método a ser chamado
-               );
-           }
-           else if (e.Key == Windows.System.VirtualKey.Up)
-           {
-               await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    Up // O Método a ser chamado
-               );
-           }
-           else if (e.Key == Windows.System.VirtualKey.Right)
-           {
-               await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                   CoreDispatcherPriority.Normal,
-                   Right // O Método a ser chamado
-              );
-           }
-           else if (e.Key == Windows.System.VirtualKey.Left)
-           {
-               await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                   Left // O Método a ser chamado
-              );
-           }
-       }
-       */
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -302,7 +197,7 @@ namespace RpgTelas
             //double aux2 = Canvas.GetTop(ImgCaco);
             while (true)
             {
-                
+
                 if (x == Canvas.GetLeft(ImgCaco))
                 {
                     break;
@@ -310,21 +205,22 @@ namespace RpgTelas
                 if (x < Canvas.GetLeft(ImgCaco))
                 {
 
-                    Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 1); 
+                    Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 1);
                     await Task.Delay(1);
                 }
-                else if (x > Canvas.GetLeft(ImgCaco)) {
+                else if (x > Canvas.GetLeft(ImgCaco))
+                {
                     Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + 1);
                     await Task.Delay(1);
                 }
-                
+
             }
 
             while (y != Canvas.GetTop(ImgCaco))
             {
                 if (y < Canvas.GetTop(ImgCaco))
                 {
-                    Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 1); 
+                    Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 1);
                     await Task.Delay(1);
                 }
                 else if (y > Canvas.GetTop(ImgCaco))
@@ -342,4 +238,3 @@ namespace RpgTelas
         }
     }
 }
-

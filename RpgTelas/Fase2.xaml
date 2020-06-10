@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="RpgTelas.Fase2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RpgTelas"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="500"
+    Width="580"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Canvas  Background="LimeGreen" Height="500" Width="580">
+        <Image x:Name="ImgCaco" Source="Assets/Imagens/Personagens/Aliados/Caco.png" Width="50" Height="50" Canvas.Top="17" Canvas.Left="18"/>
+        <Button x:Name="BtnInv" Content="Inventario" Height="40" Canvas.Left="489" Canvas.Top="10" Width="81" Click="BtnInv_Click"/>
+        <Canvas x:Name="Colidiveis" Height="500" Width="580" Canvas.Left="0" Canvas.Top="0">
+            <Image x:Name="bloco" Height="500" Width="9" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_1" Height="10" Canvas.Left="10" Width="570" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_2" Height="490" Canvas.Left="571" Canvas.Top="10" Width="9" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_3" Height="8" Canvas.Left="10" Canvas.Top="492" Width="560" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_4" Height="10" Canvas.Left="283" Canvas.Top="173" Width="151" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_5" Height="280" Canvas.Left="428" Canvas.Top="110" Width="12" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_6" Height="10" Canvas.Left="10" Canvas.Top="329" Width="483"  Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_7" Height="125" Canvas.Left="196" Canvas.Top="271" Width="12"  Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="bloco_8" Height="136" Canvas.Left="150" Canvas.Top="10" Width="8" Source="Assets/Imagens/maxresdefault.jpg" Stretch="Fill"/>
+            <Image x:Name="inimigo" Height="43" Canvas.Left="484" Canvas.Top="110" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill"/>
+            <Image x:Name="inimigo_2" Height="43" Canvas.Left="53" Canvas.Top="140" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill"/>
+            <Image x:Name="inimigo_3" Height="43" Canvas.Left="228" Canvas.Top="78" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill" RenderTransformOrigin="1.354,-2.733"/>
+            <Image x:Name="inimigo_4" Height="43" Canvas.Left="228" Canvas.Top="207" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill"/>
+            <Image x:Name="inimigo_5" Height="43" Canvas.Left="178" Canvas.Top="428" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill"/>
+            <Image x:Name="Chefe" Height="43" Canvas.Left="29" Canvas.Top="353" Width="48"  Source="Assets/Imagens/Preto.jpg" Stretch="Fill"/>
+
+        </Canvas>
+    </Canvas>
+</Page>
