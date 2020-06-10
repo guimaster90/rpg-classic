@@ -23,6 +23,13 @@ namespace RpgAniAlie.Personagens
         ArrayList LuvaEquipado = new ArrayList ();
         ArrayList ColarEquipado = new ArrayList ();
 
+        public Aliados()
+        {
+            Capacete CapaceteBasico = new Capacete();
+            CapaceteBasico.NomeDoItem = "Capacete Lixo";
+            CapaceteBasico.DefesaDoItem = 20;
+            CapaceteBasico.AtaqueItem = 5;
+            CapaceteBasico.VeloAtaqueDoItem = 5;
 
 
         public bool AdicionarArmaduraLixo(){//usado no começo do jogo
