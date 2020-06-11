@@ -5,11 +5,8 @@ using RpgAniAlie.Player;
 
 namespace RpgAniAlie.Equipamento
 {
-    public class Colar
-    {  
-            public static int SorteDoItem = 5;
-        }
-
-        
+    public class Peitoral 
+    {
+        public static int DefesaDoItem = 5;
     }
-
+}

@@ -4,22 +4,27 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    class InimigosComuns : Inimigos
+     public class InimigoComum : Inimigos
     {
-        public void AtaqueInimigoComum()
+
+        public override int Ataques()
         {
             int aux = this.Vida;
             int aux2 = aux / 2;
-            while (this.Vida > 0)
+            if (this.Vida > 0)
             {
                 if (this.Vida > aux2)
                 {
-                    Ataque();
+                    return (Ataque());
                 }
                 else
                 {
-                    AtaqueDeFuria(); // mexer depois de implementar o sistema de turnos
+                    return (AtaqueEspecial()); // mexer depois de implementar o sistema de turnos
                 }
+            }
+            else
+            {
+                return -1;
             }
         }
     }
