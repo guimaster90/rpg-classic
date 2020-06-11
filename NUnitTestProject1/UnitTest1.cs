@@ -74,7 +74,7 @@ namespace Tests
         {
             var inimigo = new Inimigos();
             inimigo.Atk = 10;
-            Assert.AreEqual(inimigo.AtaqueDeFuria(), 15);
+            Assert.AreEqual(inimigo.AtaqueEspecial(), 15);
         }
     }
 }

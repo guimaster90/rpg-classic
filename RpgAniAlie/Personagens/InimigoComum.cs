@@ -19,7 +19,7 @@ namespace RpgAniAlie.Personagens
                 }
                 else
                 {
-                    return (AtaqueDeFuria()); // mexer depois de implementar o sistema de turnos
+                    return (AtaqueEspecial()); // mexer depois de implementar o sistema de turnos
                 }
             }
             else
