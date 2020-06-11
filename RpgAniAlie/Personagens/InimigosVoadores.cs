@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    public class InimigosVoadores : InimigoComum
+    public class InimigosVoadores : Inimigos
     {
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)

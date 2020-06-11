@@ -141,12 +141,6 @@ namespace RpgAniAlie.Personagens
 
         }
 
-     
-        public override int Ataques()
-        {
-            int aux = this.Atk;
-            return aux;
-        }
 
         public override int AtaqueEspecial()
         {

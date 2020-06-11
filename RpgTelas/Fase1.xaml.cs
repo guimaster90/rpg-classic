@@ -21,6 +21,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 
+
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace RpgTelas
@@ -32,13 +33,13 @@ namespace RpgTelas
     public sealed partial class Fase1 : Page
     {
         List<UIElement> ColisoesLidar = new List<UIElement>();
-        List<UIElement> ColisoesAdd = new List<UIElement>();
         public Fase1()
         {
             this.InitializeComponent();
             this.KeyDown += Fase_KeyDown;
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            
         }
 
 

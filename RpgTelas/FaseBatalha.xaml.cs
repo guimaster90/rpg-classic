@@ -31,5 +31,30 @@ namespace RpgTelas
         {
             this.Frame.GoBack();
         }
+
+        private void AtkCaco_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Curar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CurarCaco_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AtirarCaco_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Recarregar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

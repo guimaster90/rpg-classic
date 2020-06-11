@@ -34,7 +34,7 @@ namespace RpgAniAlie
         /// <returns></returns>
         abstract public bool Critico();
 
-        abstract public int Ataques();
+        
         abstract public int AtaqueEspecial();
 
         /// <summary>

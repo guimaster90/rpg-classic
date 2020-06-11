@@ -106,9 +106,25 @@ namespace RpgAniAlie.Personagens
 
         }
 
-        public override int Ataques()
+        public virtual int Ataques()
         {
-            throw new NotImplementedException();
+             int aux = this.Vida;
+            int aux2 = aux / 2;
+            if (this.Vida > 0)
+            {
+                if (this.Vida > aux2)
+                {
+                    return (Ataque());
+                }
+                else
+                {
+                    return (AtaqueEspecial());
+                }
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
