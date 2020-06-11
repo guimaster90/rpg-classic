@@ -4,111 +4,70 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using RpgAniAlie.Equipamento;
+using RpgAniAlie.Player;
 
 namespace RpgAniAlie.Personagens
 {
     public class Aliados : Personagem
     {
+        public Aliados(){
+            this.Nivel = 0;
+        }
+        public int MedidorEspecial { get; set; }
+        public int XP { get; set; }
+        public double XPProxNlv { get; set; }
 
-        ArrayList inventarioCapacete = new ArrayList ();
-        ArrayList inventarioPeitoral = new ArrayList ();
-        ArrayList inventarioBota = new ArrayList ();
-        ArrayList inventarioLuva = new ArrayList ();
-        ArrayList inventarioColar = new ArrayList ();
-        ArrayList inventarioPoção = new ArrayList();
-        ArrayList inventarioMunição = new ArrayList();
-        ArrayList CapaceteEquipado = new ArrayList ();
-        ArrayList PeitoralEquipado = new ArrayList ();
-        ArrayList BotasEquipado = new ArrayList ();
-        ArrayList LuvaEquipado = new ArrayList ();
-        ArrayList ColarEquipado = new ArrayList ();
-
-        public Aliados()
+        public void GanharXP(int xp)
         {
-            Capacete CapaceteBasico = new Capacete();
-            CapaceteBasico.NomeDoItem = "Capacete Lixo";
-            CapaceteBasico.DefesaDoItem = 20;
-            CapaceteBasico.AtaqueItem = 5;
-            CapaceteBasico.VeloAtaqueDoItem = 5;
-
-
-        public bool AdicionarArmaduraLixo(){//usado no começo do jogo
-        inventarioCapacete.Add( new CapaceteBasico());
-        inventarioPeitoral.Add(new PeitoralBasico());
-        inventarioLuva.Add(new LuvaBasico());
-        inventarioBota.Add(new BotaBasico());
-        inventarioColar.Add(new ColarDePoucaSorte());
-        CapaceteEquipado.Add(new CapaceteBasico());
-        PeitoralEquipado.Add(new PeitoralBasico());
-        LuvaEquipado.Add(new LuvaBasico());
-        BotasEquipado.Add(new BotaBasico());
-        ColarEquipado.Add(new ColarDePoucaSorte());
-        return true;
+            this.XP += xp;
+            if(this.XP >= this.XPProxNlv)
+            {
+                this.XPProxNlv *= 1.5;
+                this.Nivel++;
+            }
+        }
+        
+        public void UparStatus()
+        {
+            this.Vida *= this.Nivel;
+            this.Def *= this.Nivel;
+            this.Atk *= this.Nivel;
+            this.Velo *= this.Nivel;
+            this.Sorte += this.Nivel;
+        }
+        public int VidaTotal()
+        {
+            int aux = (Capacete.VidaDoItem * Inventario.NlvArmadura);
+            return (aux + this.Vida);
+        }
+        public int DefesaTotal()
+        {
+           int aux = (Peitoral.DefesaDoItem * Inventario.NlvArmadura);
+            return (aux + this.Def);
         }
 
-        public bool AdicionarArmaduraBlindona(){//usado em algum bau
-        inventarioCapacete.Add( new CapaceteDefesa());
-        inventarioPeitoral.Add(new PeitoralDefesa());
-        inventarioLuva.Add(new LuvaDefesa());
-        inventarioBota.Add(new BotaDefesa());
-        return true;
+        public int AtaqueTotal()
+        {
+            int aux = (Luva.AtaqueDoItem * Inventario.NlvArmadura);
+            return (aux + this.Atk);
         }
 
-        public bool AdicionarArmaduraParruda(){//usado em algum bau
-        inventarioCapacete.Add( new CapaceteAtaque());
-        inventarioPeitoral.Add(new PeitoralAtaque());
-        inventarioLuva.Add(new LuvaAtaque());
-        inventarioBota.Add(new BotaAtaque());
-        return true;
+        public int VelocidadeTotal()
+        {
+            int aux = (Bota.VeloAtaqueDoItem* Inventario.NlvArmadura);
+            return (aux + this.Velo);
         }
 
-        public bool AdicionarArmaduraLigeirinho(){//usado em algum bau
-        inventarioCapacete.Add( new CapaceteRapido());
-        inventarioPeitoral.Add(new PeitoralRapido());
-        inventarioLuva.Add(new LuvaRapido());
-        inventarioBota.Add(new BotaRapido());
-        return true;
+        public int SorteTotal()
+        {
+            int aux = (Colar.SorteDoItem * Inventario.NlvArmadura);
+            return (aux + this.Sorte);
         }
-        public bool AdicionarColarComSorte(){//usado em algum bau
-        inventarioColar.Add(new ColarComSorte());
-        return true;
-        }
-        public bool AdicionarColoarDeMuitaSorte(){//usado em algum bau
-            inventarioColar.Add(new ColarDeMuitaSorte());
-            return true;
-        }
-
-        public bool EquiparCapacete(Equip Cap){//sera mudado futuramente pra receber um objeto via clickevent
-            CapaceteEquipado.RemoveAt(0);
-            CapaceteEquipado.Add(Cap);
-            return true;
-        }
-        public bool EquiparPeitoral(Equip Peit){//sera mudado futuramente pra receber um objeto via clickevent
-            PeitoralEquipado.RemoveAt(0);
-            PeitoralEquipado.Add(Peit);
-            return true;
-        }
-        public bool EquiparLuva(Equip Luva){//sera mudado futuramente pra receber um objeto via clickevent
-            LuvaEquipado.RemoveAt(0);
-            LuvaEquipado.Add(Luva);
-            return true;
-        }
-        public bool EquiparBota(Equip Bota){//sera mudado futuramente pra receber um objeto via clickevent
-            BotasEquipado.RemoveAt(0);
-            BotasEquipado.Add(Bota);
-            return true;
-        }
-        public bool EquiparColar(Equip Colar) {//sera mudado futuramente pra receber um objeto via clickevent
-            ColarEquipado.RemoveAt(0);
-            ColarEquipado.Add(Colar);
-            return true;
-        }
-
         public override bool Critico()
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 100);//tem que ser balanceado quando tiver feito as armaduras
-            if (x <= this.Sorte)
+            if (x <= SorteTotal())
             {
                 return true;
             }
@@ -120,18 +79,37 @@ namespace RpgAniAlie.Personagens
 
         public override int Defender(int AtaAtak)
         {
-            if (this.Def > AtaAtak)
+            if (DefesaTotal() > AtaAtak)
             {
                 return 1;
 
             }
-            else return (AtaAtak - this.Def);
+            else return (AtaAtak - DefesaTotal());
         }
 
         public override bool Esquivar(int VeloAtk)
         {
-            return false;
 
+            if (this.Velo > VeloAtk)
+            {
+                Random randNum = new Random();
+
+                int x = randNum.Next(0, 101);
+
+                if (this.Velo - VeloAtk >= x)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override int CalcularDano(int AtaAtak, int VeloAtk, bool AtaCrit)
@@ -161,6 +139,18 @@ namespace RpgAniAlie.Personagens
 
             }
 
+        }
+
+     
+        public override int Ataques()
+        {
+            int aux = this.Atk;
+            return aux;
+        }
+
+        public override int AtaqueEspecial()
+        {
+            throw new NotImplementedException();
         }
     }
 }

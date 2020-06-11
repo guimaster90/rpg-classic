@@ -14,12 +14,12 @@ namespace RpgAniAlie.Personagens
             int aux = this.Atk;
             return aux;
         }
-
+        
         /// <summary>
         /// Esse é o atauqe de furia padrão, ou seja ele apenas vai causardano extra aos aliado aos aliados
         /// </summary>
         /// <returns></returns>
-        public int AtaqueDeFuria()
+        public override int AtaqueEspecial()
         {
             double aux = (double)this.Atk * 1.5;
             return (int)aux;
@@ -37,7 +37,7 @@ namespace RpgAniAlie.Personagens
             }
         }
 
-        
+
         public override int Defender(int AtaAtak)
         {
             if (this.Def >= AtaAtak)
@@ -104,6 +104,11 @@ namespace RpgAniAlie.Personagens
                     
             }
 
+        }
+
+        public override int Ataques()
+        {
+            throw new NotImplementedException();
         }
     }
 }

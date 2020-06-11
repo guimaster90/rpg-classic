@@ -4,33 +4,38 @@ using System.Text;
 
 namespace RpgAniAlie.Personagens
 {
-    class Boss : Inimigos
+    public class Boss : Inimigos
     {
         private int AtaqueNervoso()
         {
             double aux = (double)this.Atk * 1.2;
             return (int)aux;
         }
-        public void VidaBoss()
+        public override int Ataques()
         {
             double aux = this.Vida / 100;
             double aux2 = aux * 60 ;
             double aux3 = aux * 30;
-            while(this.Vida > 0)
+            if (this.Vida > 0)
             {
                 if (this.Vida > aux2)
                 {
-                    Ataque();
-                }else if(this.Vida<aux2 && this.Vida > aux3)
+                    return(Ataque());
+                }
+                else if (this.Vida < aux2 && this.Vida > aux3)
                 {
-                    AtaqueNervoso();
-                }else if (this.Vida < aux3)
+                    return(AtaqueNervoso());
+                }
+                else
                 {
-                    AtaqueDeFuria();
+                    return(AtaqueEspecial());
                 }
 
             }
-
+            else
+            {
+                return -1;
+            }
         }
 
 
