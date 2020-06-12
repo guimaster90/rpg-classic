@@ -6,6 +6,10 @@ namespace RpgAniAlie.Personagens
 {
     public class Cobra : Aliados
     {
+        public Cobra(string sprite, string nome) : base(sprite, nome)
+        {
+
+        }
         public bool RecarregarVeneno()
         {
             if(this.MedidorEspecial< 10)
