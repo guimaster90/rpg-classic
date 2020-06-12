@@ -12,11 +12,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Canvas Background="White">
-        <Button x:Name="Voltar" Content="Escapar" Canvas.Left="499" Canvas.Top="468" Height="32" Width="81" Foreground="Black" Click="Voltar_Click" />
+        <Button x:Name="Voltar" Content="Escapar" Canvas.Left="499" Canvas.Top="463" Height="32" Width="81" Foreground="Black" Click="Voltar_Click" />
         <Image Height="150" Canvas.Top="334" Width="116" Source="Assets/Imagens/Personagens/Aliados/Caco.png" Canvas.Left="10"/>
         <Button  x:Name="AtkCaco" Content="Atk" Canvas.Left="98" Canvas.Top="334"  Foreground="Black" Click="AtkCaco_Click" Width="59"/>
         <Button  x:Name="Recarregar" Content="Recarregar" Canvas.Left="98" Canvas.Top="371"  Foreground="Black" Click="Recarregar_Click" Width="86"/>
         <Button  x:Name="AtirarCaco" Content="Atirar" Canvas.Left="98" Canvas.Top="409"  Foreground="Black" Click="AtirarCaco_Click" Width="59"/>
         <Button  x:Name="CurarCaco" Content="Curar" Canvas.Left="98" Canvas.Top="441"  Foreground="Black" Click="CurarCaco_Click" Width="59"/>
+        <Button x:Name="Perder" Content="Perder" Canvas.Left="214" Canvas.Top="74" Height="120" Width="153" Click="Perder_Click"  Foreground="Black"/>
     </Canvas>
 </Page>

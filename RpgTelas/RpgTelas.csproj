@@ -119,7 +119,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Colisões.cs" />
     <Compile Include="Fase1.xaml.cs">
       <DependentUpon>Fase1.xaml</DependentUpon>
     </Compile>
@@ -132,6 +131,9 @@
     <Compile Include="FaseBatalha.xaml.cs">
       <DependentUpon>FaseBatalha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inventario.xaml.cs">
       <DependentUpon>Inventario.xaml</DependentUpon>
     </Compile>
@@ -139,6 +141,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TelaDeFim.xaml.cs">
+      <DependentUpon>TelaDeFim.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -146,12 +151,18 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Caixao.mp3" />
+    <Content Include="Assets\Clima de Rodeio.mp3" />
     <Content Include="Assets\Imagens\BackGround.jpg" />
+    <Content Include="Assets\Imagens\Fim.jpg" />
+    <Content Include="Assets\Imagens\GAME OVER.jpg" />
     <Content Include="Assets\Imagens\maxresdefault.jpg" />
     <Content Include="Assets\Imagens\Personagens\Aliados\Caco.png" />
     <Content Include="Assets\Imagens\Preto.jpg" />
     <Content Include="Assets\Imagens\roxo.jpg" />
     <Content Include="Assets\Imagens\Tela_de_Inicio.jpg" />
+    <Content Include="Assets\Meu Amigo da Escola é um Macaco.mp3" />
+    <Content Include="Assets\Pagode Japones.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -182,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GameOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Inventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +204,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TelaDeFim.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

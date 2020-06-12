@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,11 +23,17 @@ namespace RpgTelas
     /// </summary>
     public sealed partial class FaseBatalha : Page
     {
+        MediaPlayer tocador;
         public FaseBatalha()
         {
             this.InitializeComponent();
+            
         }
-
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            tocador = (MediaPlayer)e.Parameter;
+            
+        }
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
@@ -55,6 +62,13 @@ namespace RpgTelas
         private void Recarregar_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Perder_Click(object sender, RoutedEventArgs e)
+        {
+            tocador.Source = null;
+            this.Frame.Navigate(typeof(GameOver));
+            
         }
     }
 }

@@ -6,12 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Height="720"
-    Width="1280"
+    Height="500"
+    Width="580"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Canvas Background="Aquamarine">
-        <Image x:Name="TelaDeInicio" Height="720" Width="1280" Source="ms-appx:///Assets/Imagens/Tela_de_Inicio.jpg"/>
-        <Button Content="Proxima Pagina" Canvas.Left="492" Canvas.Top="566" Height="84" Width="168" Click="Button_Click"/>
+        <Image x:Name="TelaDeInicio" Height="500" Width="580" Source="ms-appx:///Assets/Imagens/Tela_de_Inicio.jpg"  Stretch="Fill"/>
+        <Button Content="Começar" Canvas.Left="191" Canvas.Top="395" Height="84" Width="168" Click="Button_Click"/>
 
     </Canvas>
 </Page>

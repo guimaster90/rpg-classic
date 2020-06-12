@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,15 +29,26 @@ namespace RpgTelas
     public sealed partial class Fase2 : Page
     {
         List<UIElement> ColisoesLidar = new List<UIElement>();
-        List<UIElement> ColisoesAdd = new List<UIElement>();
+        MediaPlayer tocador;
         public Fase2()
         {
             this.InitializeComponent();
             this.KeyDown += Fase_KeyDown;
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            tocador = new MediaPlayer();
+            Musica();
         }
+        public async void Musica()
+        {
 
+            Windows.Storage.StorageFolder pasta = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
+            Windows.Storage.StorageFile arquivo = await pasta.GetFileAsync("Clima de Rodeio.mp3");
+
+            tocador.AutoPlay = true;
+            tocador.Source = MediaSource.CreateFromStorageFile(arquivo);
+            tocador.IsLoopingEnabled = true;
+        }
         public void handleCollisions(double x, double y)
         {
             List<UIElement> AllCollidables = Colidiveis.Children.ToList();
@@ -83,11 +96,12 @@ namespace RpgTelas
                 if (item.Name.ToLower().Contains("inimigo"))
                 {
                     item.Visibility = Visibility.Collapsed;
-                    this.Frame.Navigate(typeof(FaseBatalha));
+                    this.Frame.Navigate(typeof(FaseBatalha), tocador);
                 }
                 if (item.Name.ToLower().Contains("chefe"))
                 {
                     item.Visibility = Visibility.Collapsed;
+                    tocador.Source = null;
                     this.Frame.Navigate(typeof(Fase3));
 
                 }
