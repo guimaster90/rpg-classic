@@ -32,7 +32,7 @@ namespace RpgAniAlie.Personagens
             if (this.MedidorEspecial > 0)
             {
                 this.MedidorEspecial--;
-                int aux = this.Nivel * 5;
+                int aux = this.Nivel * 5;//Quanto maior o nivel maior é o dano do ataque especial
                 return (this.Atk += aux);
             }
             else

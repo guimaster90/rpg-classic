@@ -6,9 +6,19 @@ namespace RpgAniAlie.Personagens
 {
    public class Inimigos : Personagem
     {
+        /// <summary>
+        /// Nome dado ao ataque em estado de furia
+        /// </summary>
         public string NomeAtaqueDeFuria { get; set; }
+
+        /// <summary>
+        /// tempo até poder usar o ataque de furia denovo
+        /// </summary>
         public int CoolDown { get; set; }
 
+        /// <summary>
+        /// Nome do tipo de sprite
+        /// </summary>
         public string SpriteDeBatalha { get; set; }
 
         public Inimigos(int nivel,string sprite,string nome)
@@ -116,8 +126,8 @@ namespace RpgAniAlie.Personagens
 
         }
 
-        public virtual int Ataques()
-        {
+        public virtual int Ataques()//quando o inimigo ficar com metade da vida vai dar um ataque especial e quando ele não tiver mais vida vai retorna -1;
+        {//enquanto estiver com a vida acima de 50% dará um ataque normal
              int aux = this.VidaMax;
             int aux2 = aux / 2;
             if (this.Vida > 0)
@@ -133,7 +143,7 @@ namespace RpgAniAlie.Personagens
             }
             else
             {
-                return 0;
+                return -1;
             }
         }
     }

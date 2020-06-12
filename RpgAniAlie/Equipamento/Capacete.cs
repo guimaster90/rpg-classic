@@ -7,7 +7,10 @@ namespace RpgAniAlie.Equipamento
 {
     public class Capacete 
     {
-           public static int VidaDoItem = 5;
+        /// <summary>
+        /// Defesa extra que a armadura vai dar,o qual será aumentado com o nivel de armadura
+        /// </summary>
+        public static int VidaDoItem = 5;
            
     }
 }

@@ -10,7 +10,7 @@ namespace RpgAniAlie.Personagens
         {
 
         }
-        public bool RecarregarVeneno()
+        public bool RecarregarVeneno()//Ao acabar uma batalha a função será chamada e a cobra irá recuperar 2 de seu medidor especial
         {
             if(this.MedidorEspecial< 10)
             {
@@ -26,12 +26,12 @@ namespace RpgAniAlie.Personagens
             }
         }
 
-        public override int AtaqueEspecial()
+        public override int AtaqueEspecial()//Qaundo a cobra tiver 3 ou mais de medidor de Especial,ela podera gastar 3 medidores para utilizar um ataque especial
         {
-            if (this.MedidorEspecial > 3)
+            if (this.MedidorEspecial >= 3)
             {
-                this.MedidorEspecial -= 5;
-                int aux = this.Nivel * 7;
+                this.MedidorEspecial -= 3;
+                int aux = this.Nivel * 7;//Quanto maior o nivel maior é o dano do ataque especial
                 return (this.Atk += aux);
             }
             else

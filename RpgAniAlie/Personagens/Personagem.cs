@@ -16,10 +16,25 @@ namespace RpgAniAlie
         /// Sera a vida Mx do personagem
         /// </summary>
         public int VidaMax { get; set; }
+        /// <summary>
+        /// Ataque atual do personagem
+        /// </summary>
         public int Atk { get; set; }
+        /// <summary>
+        /// Defesa atual do personagem
+        /// </summary>
         public int Def { get; set; }
+        /// <summary>
+        /// Sorte atual do personagem
+        /// </summary>
         public int Sorte { get; set; }
+        /// <summary>
+        /// Velocidade atual do personagem
+        /// </summary>
         public int Velo { get; set; }
+        /// <summary>
+        /// Nivel atual do personagem
+        /// </summary>
         public int Nivel { get; set; }
         
      

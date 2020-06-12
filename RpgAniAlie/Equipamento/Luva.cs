@@ -7,6 +7,9 @@ namespace RpgAniAlie.Equipamento
 {
     public class Luva 
     {
-           public static int AtaqueDoItem = 5;
+        /// <summary>
+        /// Ataque extra que a armadura vai dar,o qual será aumentado com o nivel de armadura
+        /// </summary>
+        public static int AtaqueDoItem = 5;
     }
 }

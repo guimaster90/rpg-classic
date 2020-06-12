@@ -29,8 +29,8 @@ namespace Tests
             cobra.Atk = 10;
             cobra.Nivel = 1;
             Assert.AreEqual(cobra.AtaqueEspecial(), 17);
-            cobra.AtaqueEspecial();
-            Assert.AreEqual(cobra.MedidorEspecial, 6);
+             cobra.AtaqueEspecial();
+            Assert.AreEqual(cobra.MedidorEspecial, 3);
         }
     }
 }

@@ -28,9 +28,9 @@ namespace Tests
             capivara.MedidorEspecial = 9;
             capivara.Nivel = 1;
             capivara.Atk = 10;
-            Assert.AreEqual(capivara.AtaqueEspecial(), 15);
-            capivara.AtaqueEspecial();
+            Assert.AreEqual(capivara.AtaqueEspecial(), 16);
             Assert.AreEqual(capivara.MedidorEspecial, 4);
+            Assert.AreEqual(capivara.AtaqueEspecial(), 0);
         }
     }
 }
