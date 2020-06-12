@@ -10,13 +10,30 @@ namespace RpgAniAlie.Personagens
 {
     public class Aliados : Personagem
     {
-        public Aliados(){
-            this.Nivel = 0;
+        public Aliados(string sprite, string nome)
+        {
+            this.Nivel = 1;
+            this.Nome = nome;
+            this.Atk = 10;
+            this.Vida = 10;
+            this.Velo = 10;
+            this.Def = 10;
+            this.Sorte = 10;
+            this.VidaMax = this.Vida;
         }
         public int MedidorEspecial { get; set; }
         public int XP { get; set; }
         public double XPProxNlv { get; set; }
 
+        public void UparStatus()
+        {
+            this.VidaMax *= this.Nivel;
+            this.Def *= this.Nivel;
+            this.Atk *= this.Nivel;
+            this.Velo *= this.Nivel;
+            this.Sorte += this.Nivel;
+            this.Vida = this.VidaMax;
+        }
         public void GanharXP(int xp)
         {
             this.XP += xp;
@@ -24,17 +41,11 @@ namespace RpgAniAlie.Personagens
             {
                 this.XPProxNlv *= 1.5;
                 this.Nivel++;
+                UparStatus();
             }
         }
         
-        public void UparStatus()
-        {
-            this.Vida *= this.Nivel;
-            this.Def *= this.Nivel;
-            this.Atk *= this.Nivel;
-            this.Velo *= this.Nivel;
-            this.Sorte += this.Nivel;
-        }
+        
         public int VidaTotal()
         {
             int aux = (Capacete.VidaDoItem * Inventario.NlvArmadura);
@@ -67,7 +78,7 @@ namespace RpgAniAlie.Personagens
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 100);//tem que ser balanceado quando tiver feito as armaduras
-            if (x <= SorteTotal())
+            if (x <= this.SorteTotal())
             {
                 return true;
             }
@@ -79,24 +90,24 @@ namespace RpgAniAlie.Personagens
 
         public override int Defender(int AtaAtak)
         {
-            if (DefesaTotal() > AtaAtak)
+            if (this.DefesaTotal() > AtaAtak)
             {
                 return 1;
 
             }
-            else return (AtaAtak - DefesaTotal());
+            else return (AtaAtak - this.DefesaTotal());
         }
 
         public override bool Esquivar(int VeloAtk)
         {
 
-            if (this.Velo > VeloAtk)
+            if (this.VelocidadeTotal() > VeloAtk)
             {
                 Random randNum = new Random();
 
                 int x = randNum.Next(0, 101);
 
-                if (this.Velo - VeloAtk >= x)
+                if (this.VelocidadeTotal() - VeloAtk >= x)
                 {
                     return true;
                 }

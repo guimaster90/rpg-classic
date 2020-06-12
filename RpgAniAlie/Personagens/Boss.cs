@@ -6,14 +6,17 @@ namespace RpgAniAlie.Personagens
 {
     public class Boss : Inimigos
     {
-        private int AtaqueNervoso()
+        public Boss(int nivel, string sprite, string nome) : base(nivel,sprite,nome)
+        {
+        }
+        public int AtaqueNervoso()
         {
             double aux = (double)this.Atk * 1.2;
             return (int)aux;
         }
         public override int Ataques()
         {
-            double aux = this.Vida / 100;
+            double aux = this.VidaMax / 100;
             double aux2 = aux * 60 ;
             double aux3 = aux * 30;
             if (this.Vida > 0)

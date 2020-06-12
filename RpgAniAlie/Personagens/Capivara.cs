@@ -6,14 +6,16 @@ namespace RpgAniAlie.Personagens
 {
     public class Capivara : Aliados
     {
-        
-        public override int Ataques()
+        public Capivara(string sprite, string nome) : base(sprite, nome)
         {
-            int aux = this.Atk;
+
+        }
+        public  void ReceberStamina()
+        {
             if (MedidorEspecial < 10) { 
             this.MedidorEspecial++;
             }
-            return aux;
+         
         }
 
         public override int AtaqueEspecial()

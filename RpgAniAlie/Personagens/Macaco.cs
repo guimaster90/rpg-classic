@@ -7,6 +7,10 @@ namespace RpgAniAlie.Personagens
 {
     public class Macaco : Aliados
     {
+        public Macaco(string sprite, string nome) : base(sprite, nome)
+        {
+
+        }
         public bool Recarregar()
         {
             if (Inventario.QtdBala > 0 && this.MedidorEspecial == 0)

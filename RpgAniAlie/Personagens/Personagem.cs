@@ -9,16 +9,14 @@ namespace RpgAniAlie
     {
         public string Nome { get; set; }
         public int Vida { get; set; }
+        public int VidaMax { get; set; }
         public int Atk { get; set; }
         public int Def { get; set; }
         public int Sorte { get; set; }
         public int Velo { get; set; }
         public int Nivel { get; set; }
-        public string SpriteDeBatalha { get; set; }
-        public bool PegandoFogo { get; set; }
-        public bool Envenenado { get; set; }
-        public bool Sangrando { get; set; }
         
+     
         /// <summary>
         /// Irá calcular quando de dano o personagem irá sofrer
         /// </summary>

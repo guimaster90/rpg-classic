@@ -6,7 +6,10 @@ namespace RpgAniAlie.Personagens
 {
     public class InimigosVoadores : Inimigos
     {
+        public InimigosVoadores(int nivel, string sprite, string nome) : base(nivel, sprite, nome)
+        {
 
+        }
         public override int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
             Random randNum = new Random();
