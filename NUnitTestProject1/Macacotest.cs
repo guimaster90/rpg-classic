@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using RpgAniAlie.Personagens;
-using RpgAniAlie.Player;
+using RpgAniAlieLib.Personagens;
+using RpgAniAlieLib.Player;
 
 namespace Tests
 {

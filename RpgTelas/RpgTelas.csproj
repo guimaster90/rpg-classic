@@ -224,6 +224,12 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RPGAniAlieLib\RPGAniAlieLib.csproj">
+      <Project>{bacd4bbd-d51f-4f65-ae93-d00552cb0b6f}</Project>
+      <Name>RPGAniAlieLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

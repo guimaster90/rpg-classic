@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using RpgAniAlie.Equipamento;
-using RpgAniAlie.Personagens;
-using RpgAniAlie.Player;
+using RpgAniAlieLib.Equipamento;
+using RpgAniAlieLib.Personagens;
+using RpgAniAlieLib.Player;
 
 namespace Tests
 {

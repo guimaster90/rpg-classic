@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using RpgAniAlie.Personagens;
+using RpgAniAlieLib.Personagens;
 
 namespace Tests
 {
