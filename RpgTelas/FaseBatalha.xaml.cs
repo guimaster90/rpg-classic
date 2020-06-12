@@ -31,8 +31,8 @@ namespace RpgTelas
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            tocador = (MediaPlayer)e.Parameter;
-            
+            tocador = (MediaPlayer)e.Parameter;//Ira igualar o tocador ao parametro MediaPlayer que foi passado na tela anterior a está
+
         }
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
@@ -64,11 +64,11 @@ namespace RpgTelas
 
         }
 
-        private void Perder_Click(object sender, RoutedEventArgs e)
+        private void Perder_Click(object sender, RoutedEventArgs e)//Irá direcionar o jogador para a tela de GameOver
         {
-            tocador.Source = null;
-            this.Frame.Navigate(typeof(GameOver));
-            
+            tocador.Source = null;//Irá parar a musica
+            this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
+
         }
     }
 }

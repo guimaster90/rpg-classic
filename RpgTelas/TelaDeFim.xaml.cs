@@ -23,12 +23,14 @@ namespace RpgTelas
     /// </summary>
     public sealed partial class TelaDeFim : Page
     {
-        MediaPlayer tocador;
         public TelaDeFim()
         {
             this.InitializeComponent();
         }
-        private void ResetPageCache()
+        /// <summary>
+        /// Irá apagar todos os caches
+        /// </summary>
+        private void ResetPageCache()//Ira apagar o cache de todas as telas
         {
             var cacheSize = ((Frame)Parent).CacheSize;
             ((Frame)Parent).CacheSize = 0;
@@ -39,7 +41,7 @@ namespace RpgTelas
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ResetPageCache();
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage));//Irá passar para a tela MainPage
         }
     }
 }

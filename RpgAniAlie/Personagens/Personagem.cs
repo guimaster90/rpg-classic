@@ -8,7 +8,13 @@ namespace RpgAniAlie
     public abstract class Personagem
     {
         public string Nome { get; set; }
+        /// <summary>
+        /// Vida atual do personagem
+        /// </summary>
         public int Vida { get; set; }
+        /// <summary>
+        /// Sera a vida Mx do personagem
+        /// </summary>
         public int VidaMax { get; set; }
         public int Atk { get; set; }
         public int Def { get; set; }
@@ -27,12 +33,15 @@ namespace RpgAniAlie
         abstract public int CalcularDano(int AtaAtak, int VeloAtk, Boolean AtaCrit);
 
         /// <summary>
-        /// Irá se o personagem causou um dano
+        /// Ira sortear de o atk foi critico ou não
         /// </summary>
         /// <returns></returns>
         abstract public bool Critico();
 
-        
+        /// <summary>
+        /// Ira realizar um ataque com um dano diferente 
+        /// </summary>
+        /// <returns></returns>
         abstract public int AtaqueEspecial();
 
         /// <summary>
@@ -43,7 +52,7 @@ namespace RpgAniAlie
         abstract public int Defender(int AtaAtak);
 
         /// <summary>
-        /// Irá verificar se o personagem esquivou ou não 
+        /// Irá verificar se o personagem esquivou ou não caso esquevi não recebera dano
         /// </summary>
         /// <param name="VeloAtk">Ira receber a velocidade do atacante</param>
         /// <returns></returns>

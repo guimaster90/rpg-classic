@@ -23,7 +23,7 @@ namespace RpgAniAlie.Personagens
             {
                 if (this.Vida > aux2)
                 {
-                    return(Ataque());
+                    return this.Atk;
                 }
                 else if (this.Vida < aux2 && this.Vida > aux3)
                 {

@@ -21,6 +21,9 @@ namespace RpgAniAlie.Personagens
             this.Sorte = 10;
             this.VidaMax = this.Vida;
         }
+        /// <summary>
+        /// Irá guardar a quantidade de vezes que uma habilidade pode ser usada 
+        /// </summary>
         public int MedidorEspecial { get; set; }
         public int XP { get; set; }
         public double XPProxNlv { get; set; }
@@ -74,11 +77,12 @@ namespace RpgAniAlie.Personagens
             int aux = (Colar.SorteDoItem * Inventario.NlvArmadura);
             return (aux + this.Sorte);
         }
+
         public override bool Critico()
         {
             Random randNum = new Random();
-            int x = randNum.Next(0, 100);//tem que ser balanceado quando tiver feito as armaduras
-            if (x <= this.SorteTotal())
+            int x = randNum.Next(0, 100);
+            if (x <= this.SorteTotal())//Irá sortear para checar se o ataque foi critico ou não
             {
                 return true;
             }
@@ -90,7 +94,7 @@ namespace RpgAniAlie.Personagens
 
         public override int Defender(int AtaAtak)
         {
-            if (this.DefesaTotal() > AtaAtak)
+            if (this.DefesaTotal() > AtaAtak)//Se a defesa do defensor for amior do que o ataque do atacante só sera causado 1 de dano
             {
                 return 1;
 
@@ -101,25 +105,25 @@ namespace RpgAniAlie.Personagens
         public override bool Esquivar(int VeloAtk)
         {
 
-            if (this.VelocidadeTotal() > VeloAtk)
+            if (this.VelocidadeTotal() > VeloAtk)//Verificando se a velociada do atacante é menor do que a sua
             {
                 Random randNum = new Random();
 
                 int x = randNum.Next(0, 101);
 
-                if (this.VelocidadeTotal() - VeloAtk >= x)
+                if (this.VelocidadeTotal() - VeloAtk >= x)//Caso for maior ele irá sortear se o personagem conseguiu esquivar
                 {
-                    return true;
+                    return true;//Conseguiu esquivar
                 }
                 else
                 {
-                    return false;
+                    return false;//Não conseguiu esquivar
                 }
 
             }
             else
             {
-                return false;
+                return false;//Não conseguiu esquivar
             }
         }
 
@@ -127,21 +131,30 @@ namespace RpgAniAlie.Personagens
         {
             Random randNum = new Random();
             int x = randNum.Next(0, 101);
-            if (Esquivar(VeloAtk))
+            if (Esquivar(VeloAtk))//Caso o personagem esquive não recebera dano
             {
-                if (AtaCrit)
+                if (AtaCrit)//Caso o atk for critico o personagem recebera o dobro de dano
                 {
                     return Defender(AtaAtak) * 2;
                 }
                 else
                 {
-                    float aux = randNum.Next(84, 121);
 
-                    aux /= 100;
 
-                    aux = (float)Defender(AtaAtak) * aux;
+                    if (Defender(AtaAtak) == 1)//Caso a defesa for maior do que o ataque ele receberá 1 de dano
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        float aux = randNum.Next(84, 121);//O ataque pode variar entre 85% a 120% do atk original
 
-                    return (int)aux;
+                        aux /= 100;
+
+                        aux = (float)Defender(AtaAtak) * aux;
+
+                        return (int)aux;
+                    }
                 }
             }
             else

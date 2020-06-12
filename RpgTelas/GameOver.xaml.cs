@@ -34,14 +34,13 @@ namespace RpgTelas
         public async void Musica()
         {
 
-            Windows.Storage.StorageFolder pasta = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
-            Windows.Storage.StorageFile arquivo = await pasta.GetFileAsync("Caixao.mp3");
-
-            tocador.AutoPlay = true;
-            tocador.Source = MediaSource.CreateFromStorageFile(arquivo);
-            tocador.IsLoopingEnabled = true;
+            Windows.Storage.StorageFolder pasta = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets"); // Irá pegar a pasta onde está musica
+            Windows.Storage.StorageFile arquivo = await pasta.GetFileAsync("Caixao.mp3");//Ira pegar o arquivo da musica
+            tocador.AutoPlay = true;// Irá dar um auto play na musica
+            tocador.Source = MediaSource.CreateFromStorageFile(arquivo);// Está definindo o arquivo que o tocador irá tocar a musica
+            tocador.IsLoopingEnabled = true;//A musica ficará em loop
         }
-        private void ResetPageCache()
+        private void ResetPageCache()//Irá apagar o cache de todas as telas
         {
             var cacheSize = ((Frame)Parent).CacheSize;
             ((Frame)Parent).CacheSize = 0;
@@ -50,9 +49,9 @@ namespace RpgTelas
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            tocador.Source = null;
+            tocador.Source = null;//Irá parar a musica
             ResetPageCache();
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage));//Irá passar para a tela MainPage
         }
     }
 }

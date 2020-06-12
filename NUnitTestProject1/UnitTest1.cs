@@ -79,16 +79,6 @@ namespace Tests
 
         [Test]
 
-        public void Ataque()
-        {
-            var inimigo = new Inimigos(1, "deslizando", "inimig");
-            inimigo.Atk = 10;
-            int aux = inimigo.Atk;
-            Assert.AreEqual(inimigo.Ataque(), 10);
-        }
-
-        [Test]
-
         public void Ataques()
         {
             var inimigo = new Inimigos(1, "deslizando", "inimig");

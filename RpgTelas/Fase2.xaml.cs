@@ -28,31 +28,34 @@ namespace RpgTelas
     /// </summary>
     public sealed partial class Fase2 : Page
     {
-        List<UIElement> ColisoesLidar = new List<UIElement>();
+        List<UIElement> ColisoesLidar = new List<UIElement>();//Uma listas com as colisões que handleCollisions vai ter que lidar
         MediaPlayer tocador;
         public Fase2()
         {
             this.InitializeComponent();
             this.KeyDown += Fase_KeyDown;
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;//Irá habilitar o cache ou seja caso ele saia desse frame as informações que foram modificadas nele permanecerão
             tocador = new MediaPlayer();
             Musica();
         }
         public async void Musica()
         {
-
-            Windows.Storage.StorageFolder pasta = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
-            Windows.Storage.StorageFile arquivo = await pasta.GetFileAsync("Clima de Rodeio.mp3");
-
-            tocador.AutoPlay = true;
-            tocador.Source = MediaSource.CreateFromStorageFile(arquivo);
-            tocador.IsLoopingEnabled = true;
+            Windows.Storage.StorageFolder pasta = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");// Irá pegar a pasta onde está musica
+            Windows.Storage.StorageFile arquivo = await pasta.GetFileAsync("Clima de Rodeio.mp3");//Ira pegar o arquivo da musica
+            tocador.AutoPlay = true;// Irá dar um auto play na musica
+            tocador.Source = MediaSource.CreateFromStorageFile(arquivo);// Está definindo o arquivo que o tocador irá tocar a musica
+            tocador.IsLoopingEnabled = true;//A musica ficará em loop
         }
+        /// <summary>
+        /// Irá lidar com as colisões
+        /// </summary>
+        /// <param name="x">Caso o ImgCaco estiver se movendo para os lados ele será diferente de 0</param>
+        /// <param name="y">Caso o ImgCaco estiver se movendo para cima ou para baixo ele será diferente de 0</param>
         public void handleCollisions(double x, double y)
         {
-            List<UIElement> AllCollidables = Colidiveis.Children.ToList();
-            Rect player = new Rect();
+            List<UIElement> AllCollidables = Colidiveis.Children.ToList();//Irá pegar todos as imagens do Canvas Colidiveis
+            Rect player = new Rect();// Vai criar um retangulo do mesmo tamanho do image ImgCaco e no seu mesmo local
             player.X = Canvas.GetLeft(ImgCaco);
             player.Y = Canvas.GetTop(ImgCaco);
             player.Height = ImgCaco.Height;
@@ -61,48 +64,46 @@ namespace RpgTelas
 
             foreach (Image item in AllCollidables)
             {
-                if (item.Visibility == Visibility.Visible)
+                if (item.Visibility == Visibility.Visible)// Se o item não for visivel ele não irá mais ser passar pelo teste de colisão
                 {
-                    Rect obj = new Rect();
+                    Rect obj = new Rect();// Vai criar um retangulo do mesmo tamanho do image item e no seu mesmo local
                     obj.X = Canvas.GetLeft(item);
                     obj.Y = Canvas.GetTop(item);
                     obj.Height = item.Height;
                     obj.Width = item.Width;
 
-                    obj.Intersect(player);
+                    obj.Intersect(player);//Caso o retangulo player não entre em contato o retangulo obj o obj se torna um retagulo vazio 
 
                     if (!obj.IsEmpty)
                     {
-                        ColisoesLidar.Add(item);
+                        ColisoesLidar.Add(item);//Caso o retangulo não for vazio o item será adicionado na lista ColisoesLidar
                     }
                 }
             }
             foreach (Image item in ColisoesLidar)
             {
 
-                if (item.Name.ToLower().Contains("bloco"))
+                if (item.Name.ToLower().Contains("bloco"))//Caso o nome do item tiver bloco o image ImgCaco irá recuar o que foi movido dando a impressão que o bloco é um objeto solido
                 {
-                    //item.Visibility = Visibility.Collapsed;
-                    if (y != 0)
+                    if (y != 0)//Caso for para cima ou para baixo
                     {
-                        Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + y);
+                        Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + y);//O ImgCaco irá recuar para cima ou para baixo
                     }
-                    else if (x != 0)
+                    else if (x != 0)//Caso for para direita ou para esquerda
                     {
-                        Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + x);
+                        Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + x);//O ImgCaco irá recuar para direita ou para esquerda
                     }
-
                 }
-                if (item.Name.ToLower().Contains("inimigo"))
+                if (item.Name.ToLower().Contains("inimigo"))//Caso o nome do item tiver inimigo, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
                 {
-                    item.Visibility = Visibility.Collapsed;
-                    this.Frame.Navigate(typeof(FaseBatalha), tocador);
+                    item.Visibility = Visibility.Collapsed;// O item não será mais visivel
+                    this.Frame.Navigate(typeof(FaseBatalha), tocador);// Irá passar para a tela FaseBatalha, irá passar passar o tocador para a tela FaseBatalha
                 }
-                if (item.Name.ToLower().Contains("chefe"))
+                if (item.Name.ToLower().Contains("chefe"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
                 {
-                    item.Visibility = Visibility.Collapsed;
-                    tocador.Source = null;
-                    this.Frame.Navigate(typeof(Fase3));
+                    item.Visibility = Visibility.Collapsed;// O item não será mais visivel
+                    tocador.Source = null;// Irá parar a musica
+                    this.Frame.Navigate(typeof(Fase3));//Como a fase de batahla não está pronta irá passar para a tela para a Fase3
 
                 }
             }
@@ -143,110 +144,43 @@ namespace RpgTelas
 
         public async void Down()
         {
-            int x = 0;
-            // Manipular o componente de Interface
-            while (x < 1)
-            {
                 Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + 5);
                 handleCollisions(0, -5);
                 await Task.Delay(50);
-                x++;
-            }
         }
 
         public async void Up()
         {
-            int cont = 0;
-            // Manipular o componente de Interface
-            while (cont < 1)
-            {
-
                 Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 5);
                 handleCollisions(0, 5);
                 await Task.Delay(100);
-                cont++;
-            }
         }
 
         public async void Right()
         {
-            int x = 0;
-            // Manipular o componente de Interface
-            while (x < 1)
-            {
-
                 Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + 5);
                 handleCollisions(-5, 0);
                 await Task.Delay(50);
-                x++;
-            }
         }
 
         public async void Left()
         {
-            int x = 0;
-            // Manipular o componente de Interface
-            while (x < 1)
-            {
 
                 Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 5);
                 handleCollisions(5, 0);
                 await Task.Delay(50);
-                x++;
-            }
         }
 
        
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
             // Set the input focus to ensure that keyboard events are raised.
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             Debug.WriteLine("NavigatedTo!");
 
         }
 
-        public async void Movimentacao(double x, double y)
-        {
-            //double aux = Canvas.GetLeft(ImgCaco);
-            //double aux2 = Canvas.GetTop(ImgCaco);
-            while (true)
-            {
-
-                if (x == Canvas.GetLeft(ImgCaco))
-                {
-                    break;
-                }
-                if (x < Canvas.GetLeft(ImgCaco))
-                {
-
-                    Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) - 1);
-                    await Task.Delay(1);
-                }
-                else if (x > Canvas.GetLeft(ImgCaco))
-                {
-                    Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + 1);
-                    await Task.Delay(1);
-                }
-
-            }
-
-            while (y != Canvas.GetTop(ImgCaco))
-            {
-                if (y < Canvas.GetTop(ImgCaco))
-                {
-                    Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) - 1);
-                    await Task.Delay(1);
-                }
-                else if (y > Canvas.GetTop(ImgCaco))
-                {
-                    Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + 1);
-                    await Task.Delay(1);
-                }
-
-            }
-        }
 
         private void BtnInv_Click(object sender, RoutedEventArgs e)
         {
