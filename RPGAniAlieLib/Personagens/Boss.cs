@@ -6,7 +6,7 @@ namespace RpgAniAlieLib.Personagens
 {
     public class Boss : Inimigos
     {
-        public Boss(int nivel, string sprite, string nome) : base(nivel,sprite,nome)
+        public Boss(int nivel, string sprite, string nome, string nomeFuria) : base(nivel,sprite,nome, nomeFuria)
         {
         }
         public int AtaqueNervoso()//aumenta o dano do ataque em 20 porcento

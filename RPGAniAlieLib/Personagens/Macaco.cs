@@ -13,12 +13,12 @@ namespace RpgAniAlieLib.Personagens
         }
         public bool Recarregar()
         {
-            if (Inventario.QtdBala > 0 && this.MedidorEspecial == 0)
+            if (InventarioC.QtdBala > 0 && this.MedidorEspecial < 3)
             {
-                while (MedidorEspecial != 3 && Inventario.QtdBala > 0)
+                while (MedidorEspecial != 3 && InventarioC.QtdBala > 0)
                 {
                     MedidorEspecial++;
-                    Inventario.QtdBala--;
+                    InventarioC.QtdBala--;
                 }
                 return true;
             }
@@ -33,7 +33,7 @@ namespace RpgAniAlieLib.Personagens
             {
                 this.MedidorEspecial--;
                 int aux = this.Nivel * 5;//Quanto maior o nivel maior é o dano do ataque especial
-                return (this.Atk += aux);
+                return (this.Atk + aux);
             }
             else
             {

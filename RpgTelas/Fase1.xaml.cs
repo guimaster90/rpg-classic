@@ -21,6 +21,10 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.Playback;
 using Windows.Media.Core;
+using RpgAniAlieLib;
+using RpgAniAlieLib.Personagens;
+using RpgAniAlieLib.Player;
+using RpgAniAlieLib.Equipamento;
 
 
 
@@ -36,6 +40,8 @@ namespace RpgTelas
     {
         List<UIElement> ColisoesLidar = new List<UIElement>();//Uma listas com as colisões que handleCollisions vai ter que lidar
         MediaPlayer tocador;
+        Macaco m = new Macaco("Caco.png","Caco");
+        Passar p = new Passar();
         public Fase1()
         {
             this.InitializeComponent();
@@ -43,6 +49,7 @@ namespace RpgTelas
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;//Irá habilitar o cache ou seja caso ele saia desse frame as informações que foram modificadas nele permanecerão
             tocador = new MediaPlayer();
+            InventarioC.NlvArmadura = 1;
             Musica();
         }
 
@@ -106,13 +113,28 @@ namespace RpgTelas
                 if (item.Name.ToLower().Contains("inimigo"))//Caso o nome do item tiver inimigo, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
                 {
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
-                    this.Frame.Navigate(typeof(FaseBatalha), tocador);// Irá passar para a tela FaseBatalha, irá passar passar o tocador para a tela FaseBatalha
+                    p.DefinirCaco(m);
+                    p.DefinirTocador(tocador);
+                    p.QualInimigo = 'i';
+                    this.Frame.Navigate(typeof(FaseBatalha), p);// Irá passar para a tela FaseBatalha, irá passar passar o tocador para a tela FaseBatalha
                 }
                 if (item.Name.ToLower().Contains("chefe"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
                 {
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
-                    tocador.Source = null;// Irá parar a musica
-                    this.Frame.Navigate(typeof(Fase2));//Como a fase de batahla não está pronta irá passar para a tela para a Fase2
+                    p.DefinirCaco(m);
+                    p.DefinirTocador(tocador);
+                    p.QualInimigo = 'c';
+                    this.Frame.Navigate(typeof(FaseBatalha), p);//Como a fase de batahla não está pronta irá passar para a tela para a Fase2
+                }
+                if (item.Name.ToLower().Contains("pote"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                {
+                    item.Visibility = Visibility.Collapsed;// O item não será mais visivel
+                    InventarioC.qtdPocao++;
+                }
+                if (item.Name.ToLower().Contains("tesouro"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                {
+                    item.Visibility = Visibility.Collapsed;// O item não será mais visivel
+                    InventarioC.QuantidadeMoeda += 5;
                 }
             }
             

@@ -21,6 +21,8 @@ namespace RpgAniAlieLib.Personagens
             this.Def = 10;
             this.Sorte = 10;
             this.VidaMax = this.Vida;
+            this.XP = 0;
+            this.XPProxNlv = 20;
         }
         /// <summary>
         /// Irá guardar a quantidade de vezes que uma habilidade pode ser usada 
@@ -29,7 +31,7 @@ namespace RpgAniAlieLib.Personagens
         /// <summary>
         /// quantidade de experiência
         /// </summary>
-        public int XP { get; set; }
+        public int XP { get; set; } 
         /// <summary>
         /// quantidade de experiência utilizada para upar um nivel
         /// </summary>
@@ -43,6 +45,7 @@ namespace RpgAniAlieLib.Personagens
             this.Velo *= this.Nivel;
             this.Sorte += this.Nivel;
             this.Vida = this.VidaMax;
+
         }
         public void GanharXP(int xp)//irá pegar o XP Adiquirido da batalha e se tiver uma quantidade suficiente irá upar de nivel
         {
@@ -55,33 +58,28 @@ namespace RpgAniAlieLib.Personagens
             }
         }
         
-        
-        public int VidaTotal()//Irá pegar os status da armadura e incluir no status do personagem
-        {
-            int aux = (Capacete.VidaDoItem * Inventario.NlvArmadura);
-            return (aux + this.Vida);
-        }
         public int DefesaTotal()//Irá pegar os status da armadura e incluir no status do personagem
         {
-           int aux = (Peitoral.DefesaDoItem * Inventario.NlvArmadura);
+           int aux = (Peitoral.DefesaDoItem * InventarioC.NlvArmadura);
+            aux += (Capacete.DefesaDoItem2 * InventarioC.NlvArmadura);
             return (aux + this.Def);
         }
 
         public int AtaqueTotal()//Irá pegar os status da armadura e incluir no status do personagem
         {
-            int aux = (Luva.AtaqueDoItem * Inventario.NlvArmadura);
+            int aux = (Luva.AtaqueDoItem * InventarioC.NlvArmadura);
             return (aux + this.Atk);
         }
 
         public int VelocidadeTotal()//Irá pegar os status da armadura e incluir no status do personagem
         {
-            int aux = (Bota.VeloAtaqueDoItem* Inventario.NlvArmadura);
+            int aux = (Bota.VeloAtaqueDoItem* InventarioC.NlvArmadura);
             return (aux + this.Velo);
         }
 
         public int SorteTotal()//Irá pegar os status da armadura e incluir no status do personagem
         {
-            int aux = (Colar.SorteDoItem * Inventario.NlvArmadura);
+            int aux = (Colar.SorteDoItem * InventarioC.NlvArmadura);
             return (aux + this.Sorte);
         }
 
@@ -137,8 +135,7 @@ namespace RpgAniAlieLib.Personagens
         public override int CalcularDano(int AtaAtak, int VeloAtk, bool AtaCrit)
         {
             Random randNum = new Random();
-            int x = randNum.Next(0, 101);
-            if (Esquivar(VeloAtk))//Caso o personagem esquive não recebera dano
+            if (!Esquivar(VeloAtk))//Caso o personagem esquive não recebera dano
             {
                 if (AtaCrit)//Caso o atk for critico o personagem recebera o dobro de dano
                 {
@@ -172,6 +169,23 @@ namespace RpgAniAlieLib.Personagens
 
         }
 
+        public int Curar()
+        {
+            if (InventarioC.qtdPocao > 0)
+            {
+                InventarioC.qtdPocao--;
+                this.Vida += this.Nivel * 5;
+                if(this.Vida > this.VidaMax)
+                {
+                    this.Vida = this.VidaMax;
+                }
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
         public override int AtaqueEspecial()//Ataque especial é um ataque mais forte que utilizaza o MedidorDeEspecial
         {

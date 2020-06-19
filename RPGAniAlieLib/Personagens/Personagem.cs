@@ -79,9 +79,15 @@ namespace RpgAniAlieLib
         /// <param name="AtaAtak">Ira receber o atk do atacante</param>
         /// <param name="VeloAtk">Ira receber a velocidade do atacante</param>
         /// <param name="AtaCrit">Ira receber o critico do atacante</param>
-        public void ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
+        public int ReceberDano(int AtaAtak, int VeloAtk, Boolean AtaCrit)
         {
-            this.Vida -= this.CalcularDano(AtaAtak,  VeloAtk,  AtaCrit);
+           int aux = this.CalcularDano(AtaAtak, VeloAtk, AtaCrit);
+            this.Vida -= aux;
+            if(this.Vida < 0 )
+            {
+                this.Vida = 0;
+            }
+            return aux;
         }
 
         

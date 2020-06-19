@@ -21,7 +21,7 @@ namespace RpgAniAlieLib.Personagens
         /// </summary>
         public string SpriteDeBatalha { get; set; }
 
-        public Inimigos(int nivel,string sprite,string nome)
+        public Inimigos(int nivel,string sprite,string nome, string nomeFuria)
         {
             this.Nivel = nivel;
             this.SpriteDeBatalha = sprite;
@@ -32,6 +32,7 @@ namespace RpgAniAlieLib.Personagens
             this.Def = (7 * this.Nivel);
             this.Sorte = (7 * this.Nivel);
             this.VidaMax = this.Vida;
+            this.NomeAtaqueDeFuria = nomeFuria;
         }
      
         
@@ -143,7 +144,7 @@ namespace RpgAniAlieLib.Personagens
             }
             else
             {
-                return -1;
+                return 0;
             }
         }
     }

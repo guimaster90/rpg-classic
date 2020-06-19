@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RpgAniAlieLib.Player
 {
-    public class Inventario
+    public class InventarioC
     {
         /// <summary>
         /// Quantidade de munição que tem para rearregar o medidor especial do macaco

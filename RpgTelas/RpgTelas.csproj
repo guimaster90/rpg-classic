@@ -140,6 +140,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Passar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelaDeFim.xaml.cs">
       <DependentUpon>TelaDeFim.xaml</DependentUpon>
@@ -153,12 +154,14 @@
   <ItemGroup>
     <Content Include="Assets\Caixao.mp3" />
     <Content Include="Assets\Clima de Rodeio.mp3" />
+    <Content Include="Assets\Imagens\amarelo.jpg" />
     <Content Include="Assets\Imagens\BackGround.jpg" />
     <Content Include="Assets\Imagens\Fim.jpg" />
     <Content Include="Assets\Imagens\GAME OVER.jpg" />
     <Content Include="Assets\Imagens\maxresdefault.jpg" />
     <Content Include="Assets\Imagens\Personagens\Aliados\Caco.png" />
     <Content Include="Assets\Imagens\Preto.jpg" />
+    <Content Include="Assets\Imagens\rosa.jpg" />
     <Content Include="Assets\Imagens\roxo.jpg" />
     <Content Include="Assets\Imagens\Tela_de_Inicio.jpg" />
     <Content Include="Assets\Meu Amigo da Escola é um Macaco.mp3" />

@@ -15,7 +15,7 @@ namespace Tests
         
         public void ReceberDanoVoador()
         {
-            var inimigo = new InimigosVoadores(1, "deslizando", "inimig");
+            var inimigo = new InimigosVoadores(1, "deslizando", "inimig", "rapaz");
             inimigo.Vida = 100;
             inimigo.Velo = 0;
             inimigo.Def = 100;

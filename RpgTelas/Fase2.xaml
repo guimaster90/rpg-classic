@@ -30,7 +30,12 @@
             <Image x:Name="inimigo_4" Height="43" Canvas.Left="228" Canvas.Top="207" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill"/>
             <Image x:Name="inimigo_5" Height="43" Canvas.Left="178" Canvas.Top="428" Width="48"  Source="Assets/Imagens/roxo.jpg" Stretch="Fill"/>
             <Image x:Name="Chefe" Height="43" Canvas.Left="29" Canvas.Top="353" Width="48"  Source="Assets/Imagens/Preto.jpg" Stretch="Fill"/>
-
+            <Image x:Name="pote" Height="43" Canvas.Left="295" Canvas.Top="271" Width="48"  Source="Assets/Imagens/rosa.jpg" Stretch="Fill"/>
+            <Image x:Name="pote_1" Height="43" Canvas.Left="178" Canvas.Top="15" Width="48"  Source="Assets/Imagens/rosa.jpg" Stretch="Fill"/>
+            <Image x:Name="pote_2" Height="43" Canvas.Left="178" Canvas.Top="15" Width="48"  Source="Assets/Imagens/rosa.jpg" Stretch="Fill"/>
+            <Image x:Name="tesouro" Height="43" Canvas.Left="359" Canvas.Top="212" Width="48"  Source="Assets/Imagens/amarelo.jpg" Stretch="Fill"/>
+            <Image x:Name="tesouro_1" Height="43" Canvas.Left="29" Canvas.Top="428" Width="48"  Source="Assets/Imagens/amarelo.jpg" Stretch="Fill"/>
+            <Image x:Name="tesouro_2" Height="43" Canvas.Left="29" Canvas.Top="428" Width="48"  Source="Assets/Imagens/amarelo.jpg" Stretch="Fill"/>
         </Canvas>
     </Canvas>
 </Page>

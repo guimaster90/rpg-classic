@@ -16,7 +16,7 @@ namespace Tests
         [Test]
         public void TesteDanoDfIgualQAtk()
         {
-            var inimigo = new Inimigos(1,"deslizando","inimig");
+            var inimigo = new Inimigos(1,"deslizando","inimig","rapaz");
             inimigo.Vida = 23;
             inimigo.Velo = 0;
             inimigo.Def = 1000;
@@ -45,10 +45,10 @@ namespace Tests
         public void Defender()
         {
             var aliado = new Aliados("caminhar", "bichinho");
-            Inventario.NlvArmadura = 1;
+            InventarioC.NlvArmadura = 1;
             aliado.Def = 10;
             int aux = aliado.DefesaTotal();
-            Assert.AreEqual(aux, 15);
+            Assert.AreEqual(aux, 13);
             Assert.AreEqual(aliado.Defender(10), 1);
 
 

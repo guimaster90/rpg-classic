@@ -15,7 +15,7 @@ namespace Tests
         
         public void AtaqueNervoso()
         {
-            var inimigo = new Boss(1, "deslizando", "inimig");
+            var inimigo = new Boss(1, "deslizando", "inimig", "rapaz");
             inimigo.Atk = 10;
             Assert.AreEqual(inimigo.AtaqueNervoso(), 12);
         }
@@ -24,7 +24,7 @@ namespace Tests
 
         public void ataque()
         {
-            var inimigo = new Boss(1, "deslizando", "inimig");
+            var inimigo = new Boss(1, "deslizando", "inimig", "rapaz");
             inimigo.Vida = 100;
             inimigo.Atk = 10;
             Assert.AreEqual(inimigo.Ataques(), 10);

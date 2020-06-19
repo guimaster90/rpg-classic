@@ -17,7 +17,7 @@ namespace Tests
         public void Recarregar()
         {
             var macaco = new Macaco("pulando", "caco");
-            Inventario.QtdBala = 5;
+            InventarioC.QtdBala = 5;
             macaco.MedidorEspecial = 0;
             Assert.IsTrue(macaco.Recarregar());
         }

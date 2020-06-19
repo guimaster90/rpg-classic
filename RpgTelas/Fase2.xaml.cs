@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.Playback;
 using Windows.Media.Core;
+using RpgAniAlieLib.Personagens;
+using RpgAniAlieLib.Player;
 
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,6 +32,9 @@ namespace RpgTelas
     {
         List<UIElement> ColisoesLidar = new List<UIElement>();//Uma listas com as colisões que handleCollisions vai ter que lidar
         MediaPlayer tocador;
+        Macaco m ;
+        Capivara capi = new Capivara("Capi.png", "Capi");
+        Passar p = new Passar();
         public Fase2()
         {
             this.InitializeComponent();
@@ -97,14 +102,31 @@ namespace RpgTelas
                 if (item.Name.ToLower().Contains("inimigo"))//Caso o nome do item tiver inimigo, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
                 {
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
-                    this.Frame.Navigate(typeof(FaseBatalha), tocador);// Irá passar para a tela FaseBatalha, irá passar passar o tocador para a tela FaseBatalha
+                    p.DefinirCaco(m);
+                    p.DefinirCapi(capi);
+                    p.QualInimigo = 'i';
+                    p.DefinirTocador(tocador);
+                    this.Frame.Navigate(typeof(FaseBatalha), p);// Irá passar para a tela FaseBatalha, irá passar passar o tocador para a tela FaseBatalha
                 }
                 if (item.Name.ToLower().Contains("chefe"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
                 {
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
-                    tocador.Source = null;// Irá parar a musica
-                    this.Frame.Navigate(typeof(Fase3));//Como a fase de batahla não está pronta irá passar para a tela para a Fase3
+                    p.DefinirCaco(m);
+                    p.DefinirCapi(capi);
+                    p.QualInimigo = 'o';
+                    p.DefinirTocador(tocador);
+                    this.Frame.Navigate(typeof(FaseBatalha), p); ;//Como a fase de batahla não está pronta irá passar para a tela para a Fase3
 
+                }
+                if (item.Name.ToLower().Contains("pote"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                {
+                    item.Visibility = Visibility.Collapsed;// O item não será mais visivel
+                    InventarioC.qtdPocao++;
+                }
+                if (item.Name.ToLower().Contains("tesouro"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                {
+                    item.Visibility = Visibility.Collapsed;// O item não será mais visivel
+                    InventarioC.QuantidadeMoeda += 5;
                 }
             }
 
@@ -178,7 +200,8 @@ namespace RpgTelas
             // Set the input focus to ensure that keyboard events are raised.
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
             Debug.WriteLine("NavigatedTo!");
-
+            p = (Passar)e.Parameter;
+            m = p.RetornaCaco();
         }
 
 

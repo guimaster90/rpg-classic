@@ -6,7 +6,7 @@ namespace RpgAniAlieLib.Personagens
 {
     public class InimigosVoadores : Inimigos
     {
-        public InimigosVoadores(int nivel, string sprite, string nome) : base(nivel, sprite, nome)
+        public InimigosVoadores(int nivel, string sprite, string nome, string nomeFuria) : base(nivel, sprite, nome, nomeFuria)
         {
 
         }
