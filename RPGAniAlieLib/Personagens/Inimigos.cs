@@ -26,11 +26,11 @@ namespace RpgAniAlieLib.Personagens
             this.Nivel = nivel;
             this.SpriteDeBatalha = sprite;
             this.Nome = nome;
-            this.Atk = (7 * this.Nivel);
-            this.Vida = (7 * this.Nivel);
-            this.Velo = (7 * this.Nivel);
-            this.Def = (7 * this.Nivel);
-            this.Sorte = (7 * this.Nivel);
+            this.Atk = (10 * this.Nivel);
+            this.Vida = (10 * this.Nivel);
+            this.Velo = (10 * this.Nivel);
+            this.Def = (10 * this.Nivel);
+            this.Sorte = (10 * this.Nivel);
             this.VidaMax = this.Vida;
             this.NomeAtaqueDeFuria = nomeFuria;
         }

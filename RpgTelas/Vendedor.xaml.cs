@@ -39,7 +39,7 @@ namespace RpgTelas
             if(InventarioC.QuantidadeMoeda >= 1)
             {
                 InventarioC.QuantidadeMoeda--;
-                InventarioC.QuantidadeMoeda++;
+                InventarioC.qtdPocao++;
                 AtualizarTxt();
             }
         }
@@ -58,7 +58,7 @@ namespace RpgTelas
         {
             if (InventarioC.QuantidadeMoeda >= 3)
             {
-                InventarioC.QuantidadeMoeda -= 2;
+                InventarioC.QuantidadeMoeda -= 3;
                 InventarioC.NlvArmadura++;
                 AtualizarTxt();
             }

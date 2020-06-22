@@ -165,6 +165,7 @@
     <Content Include="Assets\Clima de Rodeio.mp3" />
     <Content Include="Assets\Imagens\amarelo.jpg" />
     <Content Include="Assets\Imagens\BackGround.jpg" />
+    <Content Include="Assets\Imagens\Fases\Aviso.png" />
     <Content Include="Assets\Imagens\Fases\BATALHA.jpg" />
     <Content Include="Assets\Imagens\Fases\BatalhaFase1.jpg" />
     <Content Include="Assets\Imagens\Fases\coffindanceAien.jpg" />

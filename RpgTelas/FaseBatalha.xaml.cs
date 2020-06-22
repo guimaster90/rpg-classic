@@ -113,6 +113,8 @@ namespace RpgTelas
             AtkCo.IsEnabled = false;
             CurarCo.IsEnabled = false;
             Mordida.IsEnabled = false;
+            Perder.IsEnabled = false;
+            Voltar.IsEnabled = false;
         }
         public void AtualizarTxts()
         {
@@ -420,10 +422,7 @@ namespace RpgTelas
                         MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " a " + "Cobra";
                         break;
                     }
-                    else if (caco.Vida <= 0 && co.Vida <= 0 && capi.Vida <= 0)
-                    {
-                        break;
-                    }
+                    
                     
                     
             }

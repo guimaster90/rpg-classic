@@ -39,12 +39,12 @@ namespace RpgAniAlieLib.Personagens
 
         public void UparStatus()//upa os status base dependendo do nível
         {
-            this.VidaMax *= this.Nivel;
-            this.Def *= this.Nivel;
-            this.Atk *= this.Nivel;
-            this.Velo *= this.Nivel;
-            this.Sorte += this.Nivel;
-            this.Vida = this.VidaMax;
+            this.VidaMax += 10*this.Nivel;
+            this.Def += 10*this.Nivel;
+            this.Atk += 10 * this.Nivel;
+            this.Velo += 10 * this.Nivel;
+            this.Sorte += 10 * this.Nivel;
+            this.Vida += this.VidaMax;
 
         }
         public void GanharXP(int xp)//irá pegar o XP Adiquirido da batalha e se tiver uma quantidade suficiente irá upar de nivel

@@ -24,5 +24,6 @@
             </Image.RenderTransform>
         </Image>
         <Image Height="103" Canvas.Left="448" Canvas.Top="10" Width="113"   Source="ms-appx:///Assets/Imagens/Fases/Ovni.png"  Stretch="Fill"/>
+        <Image Height="42" Canvas.Left="403" Canvas.Top="425" Width="167"  Source="ms-appx:///Assets/Imagens/Fases/Aviso.png"  Stretch="Fill"/>
     </Canvas>
 </Page>
