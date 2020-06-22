@@ -66,7 +66,6 @@ namespace RpgTelas
                 HpCapi.Visibility = Visibility.Collapsed;
                 Estamina.Visibility = Visibility.Collapsed;
             }
-            InventarioC.QtdBala = 4;
             if (p.QualInimigo == 'i')
             {
                 InimigosRamdom();
@@ -75,32 +74,45 @@ namespace RpgTelas
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }else if (p.QualInimigo == 'c')
             {
-                InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/maxresdefault.jpg", "Capivara", "Investida"));
+                InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/Personagens/Inimigos/CapivaraMal.png", "Capivara", "Investida"));
                 qualInimigo = 0;
+                ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }
             else if (p.QualInimigo == 'o')
             {
-                InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/maxresdefault.jpg", "Cobra", "Mordida"));
+                InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/Personagens/Inimigos/CobraMal.png", "Cobra", "Mordida"));
                 qualInimigo = 0;
+                ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }
             else if (p.QualInimigo == 'a')
             {
-                InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/maxresdefault.jpg", "Alien", "Laiser"));
+                InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/BossFinal.png", "Alien", "Laiser"));
                 qualInimigo = 0;
+                ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }
             AtualizarTxts();
         }
         public void InimigosRamdom()
         {
-            Random randNum = new Random();
-
-            int x = randNum.Next(caco.Nivel , caco.Nivel +2);
-            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/maxresdefault.jpg", "Urso","Garrada"));
-            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/roxo.jpg", "Furão", "Cabeçada"));
-            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/roxo.jpg", "Girafa", "Pescoçada"));
-            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/roxo.jpg", "Elefante", "Trombada"));
-            InimigosList.Add(new InimigosVoadores(caco.Nivel, "/Assets/Imagens/maxresdefault.jpg", "Gavião", "Garrada"));
-            InimigosList.Add(new InimigosVoadores(caco.Nivel, "/Assets/Imagens/maxresdefault.jpg", "Urubu", " Bicada"));
+            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Urso.png", "Urso","Garrada"));
+            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Furao.png", "Furão", "Cabeçada"));
+            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Girafa.png", "Girafa", "Pescoçada"));
+            InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Elefante.png", "Elefante", "Trombada"));
+            InimigosList.Add(new InimigosVoadores(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Gavião.png", "Gavião", "Garrada"));
+            InimigosList.Add(new InimigosVoadores(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Urubu.png", "Urubu", " Bicada"));
+        }
+        public void Pausar_Button()
+        {
+            AtkCaco.IsEnabled = false;
+            AtirarCaco.IsEnabled = false;
+            CurarCaco.IsEnabled = false;
+            Recarregar.IsEnabled = false;
+            AtkCapi.IsEnabled = false;
+            CurarCapi.IsEnabled = false;
+            Investida.IsEnabled = false;
+            AtkCo.IsEnabled = false;
+            CurarCo.IsEnabled = false;
+            Mordida.IsEnabled = false;
         }
         public void AtualizarTxts()
         {
@@ -340,82 +352,97 @@ namespace RpgTelas
             
             
         }
-
+       
         public async void ReacaoInimigo()
         {
-            
+
             if (InimigosList[qualInimigo].Vida > 0)
             {
-                int aux= 0;
+                int aux = 0;
                 if (capi != null)
                 {
                     aux++;
                 }
 
-                if(co != null)
+                if (co != null)
                 {
                     aux++;
                 }
                 Random randNum = new Random();
 
-                
-               int aleatorio = randNum.Next(0,aux+1);
-                if (aleatorio == 0 && 0<caco.Vida )
+                while (true)
                 {
-                    aux = caco.ReceberDano(InimigosList[qualInimigo].Ataques(), InimigosList[qualInimigo].Velo, InimigosList[qualInimigo].Critico());
-                    string aux2;
-                   if ( InimigosList[qualInimigo].Ataques() > InimigosList[qualInimigo].Atk )
-                    {
-                         aux2 = " com uma " + InimigosList[qualInimigo].NomeAtaqueDeFuria;
-                    }
-                    else
-                    {
-                        aux2 = "";
-                    }
-                    MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " ao  Macaco ";
-                }
-                else if (0 < capi.Vida && aleatorio == 1 || capi != null &&  caco.Vida < 0 && 0 < capi.Vida)
-                {
-                    string aux2;
-                    if (InimigosList[qualInimigo].Ataques() > InimigosList[qualInimigo].Atk)
-                    {
-                        aux2 = " com uma " + InimigosList[qualInimigo].NomeAtaqueDeFuria;
-                    }
-                    else
-                    {
-                        aux2 = "";
-                    }
-                    capi.ReceberDano(InimigosList[qualInimigo].Ataques(), InimigosList[qualInimigo].Velo, InimigosList[qualInimigo].Critico());
-                    MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " a " + "Capivara";
-                }
-                else if (aleatorio == 2 && 0 < co.Vida)
-                {
-                    string aux2;
-                    if (InimigosList[qualInimigo].Ataques() > InimigosList[qualInimigo].Atk)
-                    {
-                        aux2 = " com uma " + InimigosList[qualInimigo].NomeAtaqueDeFuria;
-                    }
-                    else
-                    {
-                        aux2 = "";
-                    }
-                    co.ReceberDano(InimigosList[qualInimigo].Ataques(), InimigosList[qualInimigo].Velo, InimigosList[qualInimigo].Critico());
-                    MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " a " + "Cobra";
-                }
 
+                
+                int aleatorio = randNum.Next(0, aux + 1);
+                    if (aleatorio == 0 && 0 < caco.Vida)
+                    {
+                        aux = caco.ReceberDano(InimigosList[qualInimigo].Ataques(), InimigosList[qualInimigo].Velo, InimigosList[qualInimigo].Critico());
+                        string aux2;
+                        if (InimigosList[qualInimigo].Ataques() > InimigosList[qualInimigo].Atk)
+                        {
+                            aux2 = " com uma " + InimigosList[qualInimigo].NomeAtaqueDeFuria;
+                        }
+                        else
+                        {
+                            aux2 = "";
+                        }
+                        MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " ao  Macaco ";
+                        break;
+                    }
+                    else if (0 < capi.Vida && aleatorio == 1)
+                    {
+                        string aux2;
+                        if (InimigosList[qualInimigo].Ataques() > InimigosList[qualInimigo].Atk)
+                        {
+                            aux2 = " com uma " + InimigosList[qualInimigo].NomeAtaqueDeFuria;
+                        }
+                        else
+                        {
+                            aux2 = "";
+                        }
+                        capi.ReceberDano(InimigosList[qualInimigo].Ataques(), InimigosList[qualInimigo].Velo, InimigosList[qualInimigo].Critico());
+                        MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " a " + "Capivara";
+                        break;
+                    }
+                    else if (aleatorio == 2 && 0 < co.Vida)
+                    {
+                        string aux2;
+                        if (InimigosList[qualInimigo].Ataques() > InimigosList[qualInimigo].Atk)
+                        {
+                            aux2 = " com uma " + InimigosList[qualInimigo].NomeAtaqueDeFuria;
+                        }
+                        else
+                        {
+                            aux2 = "";
+                        }
+                        co.ReceberDano(InimigosList[qualInimigo].Ataques(), InimigosList[qualInimigo].Velo, InimigosList[qualInimigo].Critico());
+                        MensagemDoMeio.Text += "O " + InimigosList[qualInimigo].Nome + " causou " + aux.ToString() + " de dano " + aux2 + " a " + "Cobra";
+                        break;
+                    }
+                    else if (caco.Vida <= 0 && co.Vida <= 0 && capi.Vida <= 0)
+                    {
+                        break;
+                    }
+                    
+                    
+            }
                 if(caco.Vida <= 0  && capi == null && co == null)
                 {
+                    Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
                 }
                 else if(caco.Vida <= 0 && capi.Vida <= 0 && co == null)
                 {
+                    Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
                 }else if(caco.Vida <= 0 && capi.Vida <= 0 && co.Vida < 0)
                 {
+                    Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
@@ -423,6 +450,7 @@ namespace RpgTelas
             }
             else
             {
+                Pausar_Button();
                 await Task.Delay(TimeSpan.FromSeconds(5));
                 MensagemDoMeio.Text = "Você ganhou a batalha. Você recebeu uma moeda. Todos os seus aliados ganharão 10 de xp";
                 InventarioC.QuantidadeMoeda++;
@@ -459,5 +487,7 @@ namespace RpgTelas
 
             }
         }
+
+
     }
 }

@@ -40,7 +40,7 @@ namespace RpgTelas
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Fase1));
+            this.Frame.Navigate(typeof(Instrucao));
         }
     }
 }

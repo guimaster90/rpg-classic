@@ -10,8 +10,19 @@
     Width="580"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Canvas Background="Aquamarine">
-        <Image x:Name="TelaDeInicio" Height="500" Width="580" Source="ms-appx:///Assets/Imagens/Tela_de_Inicio.jpg"  Stretch="Fill"/>
-        <Button Content="Começar" Canvas.Left="191" Canvas.Top="395" Height="84" Width="168" Click="Button_Click"/>
+        <Image x:Name="TelaDeInicio" Height="500" Width="580" Source="ms-appx:///Assets/Imagens/Fases/Inicio.gif"  Stretch="Fill"/>
 
+        <Button Canvas.Left="206" Canvas.Top="383" Height="84" Width="168" Click="Button_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image  Source="ms-appx:///Assets/Imagens/Fases/Iniciar.png"  Stretch="Fill" Height="74" Width="147"  />
+            </StackPanel>
+        </Button>
+        <Image Height="302" Canvas.Left="107" Canvas.Top="47" Width="341"  Source="ms-appx:///Assets/Imagens/Fases/Titulo.png"  Stretch="Fill"/>
+        <Image Height="128" Canvas.Top="283.5" Width="166"  Source="ms-appx:///Assets/Imagens/Fases/Ovni.png"  Stretch="Fill" Canvas.Left="6.5" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Image.RenderTransform>
+                <CompositeTransform SkewX="-14.243" TranslateX="16.246"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image Height="103" Canvas.Left="448" Canvas.Top="10" Width="113"   Source="ms-appx:///Assets/Imagens/Fases/Ovni.png"  Stretch="Fill"/>
     </Canvas>
 </Page>

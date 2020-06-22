@@ -131,6 +131,10 @@ namespace RpgTelas
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
                     InventarioC.QuantidadeMoeda += 5;
                 }
+                if (item.Name.ToLower().Contains("vendedor"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                {
+                    this.Frame.Navigate(typeof(Vendedor));
+                }
             }
 
             ColisoesLidar.Clear();

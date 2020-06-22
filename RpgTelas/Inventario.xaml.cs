@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RpgAniAlieLib.Player;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,9 +26,15 @@ namespace RpgTelas
         public Inventario()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            AtualizarTxt();
         }
-
+        public void AtualizarTxt()
+        {
+            Pote.Text = ": " + InventarioC.qtdPocao.ToString();
+            Muni.Text = ": " + InventarioC.QtdBala.ToString();
+            Moeda.Text = ": " + InventarioC.QuantidadeMoeda.ToString();
+            Armadura.Text = "Nivel: " + InventarioC.NlvArmadura.ToString();
+        }
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();

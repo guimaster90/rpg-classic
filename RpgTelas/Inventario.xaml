@@ -10,6 +10,16 @@
     Height="500"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Canvas Background="White">
-        <Button x:Name="Voltar" Content="Voltar" Canvas.Left="212" Canvas.Top="193" Height="114" Width="156" Foreground="Black" Click="Voltar_Click" />
+        <Image  Height="500" Width="580"  Source="Assets/Imagens/Fases/fundoInventario.png" Stretch="Fill"/>
+        <Button x:Name="Voltar" Content="Voltar" Canvas.Left="463" Canvas.Top="424" Height="49" Width="93" Foreground="Black" Click="Voltar_Click" />
+        <Image Height="77" Canvas.Left="17" Canvas.Top="26" Width="83"  Source="Assets/Imagens/Item/Municao.png"/>
+        <Image Height="59" Canvas.Left="27" Canvas.Top="142" Width="64" Source="Assets/Imagens/Item/Pocao.png" />
+        <Image Height="59" Canvas.Left="27" Canvas.Top="236" Width="64" Source="Assets/Imagens/Item/Moeda.png" />
+        <Image Height="86" Canvas.Top="324" Width="120" Source="Assets/Imagens/Item/Armadura.png" />
+        <TextBlock x:Name="Muni"  Foreground="Black" Canvas.Left="100" Canvas.Top="55"  TextWrapping="Wrap" Height="32" Width="78"/>
+        <TextBlock x:Name="Pote"   Foreground="Black"  Canvas.Left="100" Canvas.Top="162"  TextWrapping="Wrap" Height="33" Width="75"/>
+        <TextBlock x:Name="Moeda"   Foreground="Black"  Canvas.Left="100" Canvas.Top="256"  TextWrapping="Wrap" Height="33" Width="75"/>
+        <TextBlock x:Name="Armadura"   Foreground="Black"  Canvas.Left="100" Canvas.Top="352"  TextWrapping="Wrap" Height="33" Width="150"/>
+
     </Canvas>
 </Page>

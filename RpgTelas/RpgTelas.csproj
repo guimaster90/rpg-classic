@@ -134,6 +134,12 @@
     <Compile Include="GameOver.xaml.cs">
       <DependentUpon>GameOver.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Historia.xaml.cs">
+      <DependentUpon>Historia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Instrucao.xaml.cs">
+      <DependentUpon>Instrucao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inventario.xaml.cs">
       <DependentUpon>Inventario.xaml</DependentUpon>
     </Compile>
@@ -144,6 +150,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelaDeFim.xaml.cs">
       <DependentUpon>TelaDeFim.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor.xaml.cs">
+      <DependentUpon>Vendedor.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -156,10 +165,55 @@
     <Content Include="Assets\Clima de Rodeio.mp3" />
     <Content Include="Assets\Imagens\amarelo.jpg" />
     <Content Include="Assets\Imagens\BackGround.jpg" />
+    <Content Include="Assets\Imagens\Fases\BATALHA.jpg" />
+    <Content Include="Assets\Imagens\Fases\BatalhaFase1.jpg" />
+    <Content Include="Assets\Imagens\Fases\coffindanceAien.jpg" />
+    <Content Include="Assets\Imagens\Fases\DuckDodgers.jpg" />
+    <Content Include="Assets\Imagens\Fases\Fase1ComBorda.jpg" />
+    <Content Include="Assets\Imagens\Fases\Fase2ComBorda.jpg" />
+    <Content Include="Assets\Imagens\Fases\Fase3ComBorda.jpg" />
+    <Content Include="Assets\Imagens\Fases\fundoInventario.png" />
+    <Content Include="Assets\Imagens\Fases\Game-Over.png" />
+    <Content Include="Assets\Imagens\Fases\Historia1.png" />
+    <Content Include="Assets\Imagens\Fases\Historia2.png" />
+    <Content Include="Assets\Imagens\Fases\Historia.png" />
+    <Content Include="Assets\Imagens\Fases\Iniciar.png" />
+    <Content Include="Assets\Imagens\Fases\Inicio.gif" />
+    <Content Include="Assets\Imagens\Fases\Instrucoes.png" />
+    <Content Include="Assets\Imagens\Fases\Ovni.png" />
+    <Content Include="Assets\Imagens\Fases\Proximo.png" />
+    <Content Include="Assets\Imagens\Fases\Regra1.png" />
+    <Content Include="Assets\Imagens\Fases\Regra2.png" />
+    <Content Include="Assets\Imagens\Fases\Regra3.png" />
+    <Content Include="Assets\Imagens\Fases\Regra4.png" />
+    <Content Include="Assets\Imagens\Fases\Regra5.png" />
+    <Content Include="Assets\Imagens\Fases\Regra6.png" />
+    <Content Include="Assets\Imagens\Fases\Regra7.png" />
+    <Content Include="Assets\Imagens\Fases\Titulo.png" />
+    <Content Include="Assets\Imagens\Fases\VendedorTxt.png" />
     <Content Include="Assets\Imagens\Fim.jpg" />
     <Content Include="Assets\Imagens\GAME OVER.jpg" />
+    <Content Include="Assets\Imagens\Item\Armadura.png" />
+    <Content Include="Assets\Imagens\Item\LojaVendedor.jpg" />
+    <Content Include="Assets\Imagens\Item\Mochila.png" />
+    <Content Include="Assets\Imagens\Item\Moeda.png" />
+    <Content Include="Assets\Imagens\Item\Municao.png" />
+    <Content Include="Assets\Imagens\Item\Pocao.png" />
+    <Content Include="Assets\Imagens\Item\Tesouro.png" />
     <Content Include="Assets\Imagens\maxresdefault.jpg" />
     <Content Include="Assets\Imagens\Personagens\Aliados\Caco.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\BossFinal.png" />
+    <Content Include="Assets\Imagens\Personagens\Aliados\Capivara.png" />
+    <Content Include="Assets\Imagens\Personagens\Aliados\Cobra.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\CapivaraMal.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\CobraMal.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\Elefante.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\Furao.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\Gavião.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\Girafa.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\InimigSurpresa.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\Urso.png" />
+    <Content Include="Assets\Imagens\Personagens\Inimigos\Urubu.png" />
     <Content Include="Assets\Imagens\Preto.jpg" />
     <Content Include="Assets\Imagens\rosa.jpg" />
     <Content Include="Assets\Imagens\roxo.jpg" />
@@ -200,6 +254,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Historia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Instrucao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Inventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +274,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vendedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -221,9 +287,7 @@
       <Version>1.25.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Imagens\Personagens\Inimigos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
