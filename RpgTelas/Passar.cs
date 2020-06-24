@@ -10,6 +10,9 @@ using Windows.Media.Playback;
 
 namespace RpgTelas
 {
+    /// <summary>
+    /// Vai pegar as os obejtos dos personagens, o tocador e q tipo de inimigo é para passar eles entre as telas
+    /// </summary>
     public class Passar
     {
         Macaco m = null;

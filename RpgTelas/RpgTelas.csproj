@@ -175,6 +175,7 @@
     <Content Include="Assets\Imagens\Fases\Fase3ComBorda.jpg" />
     <Content Include="Assets\Imagens\Fases\fundoInventario.png" />
     <Content Include="Assets\Imagens\Fases\Game-Over.png" />
+    <Content Include="Assets\Imagens\Fases\Historia3.png" />
     <Content Include="Assets\Imagens\Fases\Historia1.png" />
     <Content Include="Assets\Imagens\Fases\Historia2.png" />
     <Content Include="Assets\Imagens\Fases\Historia.png" />
@@ -182,6 +183,8 @@
     <Content Include="Assets\Imagens\Fases\Inicio.gif" />
     <Content Include="Assets\Imagens\Fases\Instrucoes.png" />
     <Content Include="Assets\Imagens\Fases\Ovni.png" />
+    <Content Include="Assets\Imagens\Fases\Parabens.gif" />
+    <Content Include="Assets\Imagens\Fases\Parabens.png" />
     <Content Include="Assets\Imagens\Fases\Proximo.png" />
     <Content Include="Assets\Imagens\Fases\Regra1.png" />
     <Content Include="Assets\Imagens\Fases\Regra2.png" />
@@ -221,6 +224,7 @@
     <Content Include="Assets\Imagens\Tela_de_Inicio.jpg" />
     <Content Include="Assets\Meu Amigo da Escola é um Macaco.mp3" />
     <Content Include="Assets\Pagode Japones.mp3" />
+    <Content Include="Assets\Parabains.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

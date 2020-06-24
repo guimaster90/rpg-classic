@@ -58,10 +58,9 @@ namespace RpgAniAlieLib.Personagens
 
         public override int Defender(int AtaAtak)
         {
-            if (this.Def >= AtaAtak)//Se a defesa do defensor for amior do que o ataque do atacante só sera causado 1 de dano
+            if (this.Def >= AtaAtak)//Se a defesa do defensor for maior do que o ataque do atacante só sera causado 1 de dano
             {
                 return 1;
-
             }
             else return (AtaAtak - this.Def); 
 

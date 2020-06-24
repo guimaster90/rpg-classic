@@ -11,8 +11,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Canvas>
-        <Image x:Name="TelaDeInicio" Height="500" Width="580" Source="ms-appx:///Assets/Imagens/Fim.jpg"  Stretch="Fill"/>
+        <Image x:Name="TelaDeInicio" Height="500" Width="580" Source="ms-appx:///Assets/Imagens/Fases/Parabens.gif"  Stretch="Fill"/>
         <Button Content="Jogar novamente" Canvas.Left="207" Canvas.Top="350" Height="86" Width="166" Click="Button_Click"/>
-
+        <Image  Height="197" Width="364" Source="ms-appx:///Assets/Imagens/Fases/Parabens.png"  Stretch="Fill" Canvas.Left="118" Canvas.Top="83"/>
     </Canvas>
 </Page>

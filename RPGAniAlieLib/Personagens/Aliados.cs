@@ -44,7 +44,7 @@ namespace RpgAniAlieLib.Personagens
             this.Atk += 10 * this.Nivel;
             this.Velo += 10 * this.Nivel;
             this.Sorte += 10 * this.Nivel;
-            this.Vida += this.VidaMax;
+            this.Vida = this.VidaMax;
 
         }
         public void GanharXP(int xp)//irá pegar o XP Adiquirido da batalha e se tiver uma quantidade suficiente irá upar de nivel

@@ -33,7 +33,7 @@ namespace RpgTelas
         Cobra co;
         Capivara capi;
         List<Inimigos> InimigosList = new List<Inimigos>();
-        int qualInimigo;
+        int qualInimigo;//Vai dizer quel é o inimigo sortiado
         public FaseBatalha()
         {
             this.InitializeComponent();
@@ -47,7 +47,7 @@ namespace RpgTelas
             co = p.RetornaCo();
             capi = p.RetornaCapi();
 
-            if(co == null)
+            if(co == null)//Se o obejeto for nulo vai deixar invisivel todos os botões e imagens associados
             {
                 ImgCo.Visibility = Visibility.Collapsed;
                 AtkCo.Visibility = Visibility.Collapsed;
@@ -57,7 +57,7 @@ namespace RpgTelas
                 Veneno.Visibility = Visibility.Collapsed;
             }
 
-            if(capi == null)
+            if(capi == null)//Se o obejeto for nulo vai deixar invisivel todos os botões e imagens associados
             {
                 ImgCapi.Visibility = Visibility.Collapsed;
                 AtkCapi.Visibility = Visibility.Collapsed;
@@ -66,33 +66,33 @@ namespace RpgTelas
                 HpCapi.Visibility = Visibility.Collapsed;
                 Estamina.Visibility = Visibility.Collapsed;
             }
-            if (p.QualInimigo == 'i')
+            if (p.QualInimigo == 'i')//Se for i é um inimigo normal
             {
                 InimigosRamdom();
                 Random randNum = new Random();
                 qualInimigo = randNum.Next(0, InimigosList.Count);
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
-            }else if (p.QualInimigo == 'c')
+            }else if (p.QualInimigo == 'c')//Se for c é o primeiro bos
             {
                 InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/Personagens/Inimigos/CapivaraMal.png", "Capivara", "Investida"));
                 qualInimigo = 0;
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }
-            else if (p.QualInimigo == 'o')
+            else if (p.QualInimigo == 'o')//Se for o é o segundo boss
             {
                 InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/Personagens/Inimigos/CobraMal.png", "Cobra", "Mordida"));
                 qualInimigo = 0;
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }
-            else if (p.QualInimigo == 'a')
+            else if (p.QualInimigo == 'a')//Se for a é o ultimo boss
             {
-                InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/BossFinal.png", "Alien", "Laiser"));
+                InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/BossFinal.png", "Comandante Alien", "Laiser"));
                 qualInimigo = 0;
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
             }
             AtualizarTxts();
         }
-        public void InimigosRamdom()
+        public void InimigosRamdom()//Vai adicionar os imigos em uma lista para randomizar eles
         {
             InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Urso.png", "Urso","Garrada"));
             InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Furao.png", "Furão", "Cabeçada"));
@@ -101,7 +101,7 @@ namespace RpgTelas
             InimigosList.Add(new InimigosVoadores(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Gavião.png", "Gavião", "Garrada"));
             InimigosList.Add(new InimigosVoadores(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/Urubu.png", "Urubu", " Bicada"));
         }
-        public void Pausar_Button()
+        public void Pausar_Button()//Vai pausar os botões
         {
             AtkCaco.IsEnabled = false;
             AtirarCaco.IsEnabled = false;
@@ -116,7 +116,7 @@ namespace RpgTelas
             Perder.IsEnabled = false;
             Voltar.IsEnabled = false;
         }
-        public void AtualizarTxts()
+        public void AtualizarTxts()//Vai atualizar os txts da fase de batalha
         {
             HpCaco.Text ="HP: " + caco.Vida.ToString() + "/" + caco.VidaMax.ToString();
             Carga.Text ="Munição: "+ caco.MedidorEspecial + "/3";
@@ -136,12 +136,12 @@ namespace RpgTelas
                 Veneno.Text = "Veneno: " + co.MedidorEspecial + "/" + "10";
             }
         }
-        private void Voltar_Click(object sender, RoutedEventArgs e)
+        private void Voltar_Click(object sender, RoutedEventArgs e)//Vai sair da fase de batalha
         {
             this.Frame.GoBack();
         }
 
-        private void AtkCaco_Click(object sender, RoutedEventArgs e)
+        private void AtkCaco_Click(object sender, RoutedEventArgs e)//Vai realizar o ataque do macaco
         {
             MensagemDoMeio.Text = "";
             if (0<caco.Vida)
@@ -160,7 +160,7 @@ namespace RpgTelas
             }
         }
 
-        private void CurarCaco_Click(object sender, RoutedEventArgs e)
+        private void CurarCaco_Click(object sender, RoutedEventArgs e)//Vai realizar a cura do macaco
         {
             MensagemDoMeio.Text = "";
            
@@ -181,7 +181,7 @@ namespace RpgTelas
            
         }
 
-        private void AtirarCaco_Click(object sender, RoutedEventArgs e)
+        private void AtirarCaco_Click(object sender, RoutedEventArgs e)//Vai realizar o tiro do macaco
         {
             MensagemDoMeio.Text = "";
             if (0 < caco.Vida)
@@ -205,7 +205,7 @@ namespace RpgTelas
             }
         }
 
-        private void Recarregar_Click(object sender, RoutedEventArgs e)
+        private void Recarregar_Click(object sender, RoutedEventArgs e)//Vai realizar a recarga do macaco
         {
             MensagemDoMeio.Text = "";
             if (0<caco.Vida )
@@ -235,7 +235,7 @@ namespace RpgTelas
 
         }
 
-        private void AtkCapi_Click(object sender, RoutedEventArgs e)
+        private void AtkCapi_Click(object sender, RoutedEventArgs e)//Vai realizar o atk da capiavara
         {
             MensagemDoMeio.Text = "";
             if (0 < capi.Vida)
@@ -253,7 +253,7 @@ namespace RpgTelas
             }
         }
 
-        private void Investida_Click(object sender, RoutedEventArgs e)
+        private void Investida_Click(object sender, RoutedEventArgs e)//Vai realizar a investida da capiavara
         {
             MensagemDoMeio.Text = "";
             if (0 < capi.Vida)
@@ -277,7 +277,7 @@ namespace RpgTelas
             }
         }
 
-        private void CurarCapi_Click(object sender, RoutedEventArgs e)
+        private void CurarCapi_Click(object sender, RoutedEventArgs e)//Vai realizar a cura da capiavara
         {
             MensagemDoMeio.Text = "";
                 if (capi.Curar() == 1)
@@ -293,7 +293,7 @@ namespace RpgTelas
             
         }
 
-        private void AtkCo_Click(object sender, RoutedEventArgs e)
+        private void AtkCo_Click(object sender, RoutedEventArgs e)//Vai realizar o ataque da cobra
         {
             MensagemDoMeio.Text = "";
             if (0 < co.Vida )
@@ -312,7 +312,7 @@ namespace RpgTelas
             }
         }
 
-        private void Mordida_Click(object sender, RoutedEventArgs e)
+        private void Mordida_Click(object sender, RoutedEventArgs e)//Vai realizar a mordida da cobra
         {
             MensagemDoMeio.Text = "";
             if (0 < co.Vida)
@@ -337,7 +337,7 @@ namespace RpgTelas
             }
         }
 
-        private void CurarCo_Click(object sender, RoutedEventArgs e)
+        private void CurarCo_Click(object sender, RoutedEventArgs e)//Vai realizar a cura da cobra
         {
             MensagemDoMeio.Text = "";
                 if (co.Curar() == 1)
@@ -355,24 +355,24 @@ namespace RpgTelas
             
         }
        
-        public async void ReacaoInimigo()
+        public async void ReacaoInimigo()//Irá fazer a reção do inimigo
         {
 
-            if (InimigosList[qualInimigo].Vida > 0)
+            if (InimigosList[qualInimigo].Vida > 0)//Se ele estiver vivo ele vai fazer a ação
             {
                 int aux = 0;
-                if (capi != null)
+                if (capi != null)///Vai vericar se o objeto existe
                 {
-                    aux++;
+                    aux++;//Caso exista o aux vai ser adicionado mais um
                 }
 
-                if (co != null)
+                if (co != null)///Vai vericar se o objeto existe
                 {
-                    aux++;
+                    aux++;//Caso exista o aux vai ser adicionado mais um
                 }
                 Random randNum = new Random();
 
-                while (true)
+                while (true)//Vai continuar no wihle até o inimigo causar dano a um aliado
                 {
 
                 
@@ -426,20 +426,20 @@ namespace RpgTelas
                     
                     
             }
-                if(caco.Vida <= 0  && capi == null && co == null)
+                if(caco.Vida <= 0  && capi == null && co == null)//Ira verficar se os aliados perderam
                 {
                     Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
                 }
-                else if(caco.Vida <= 0 && capi.Vida <= 0 && co == null)
+                else if(caco.Vida <= 0 && capi.Vida <= 0 && co == null)/ Ira verficar se os aliados perderam
                 {
                     Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
-                }else if(caco.Vida <= 0 && capi.Vida <= 0 && co.Vida < 0)
+                }else if(caco.Vida <= 0 && capi.Vida <= 0 && co.Vida < 0)/ Ira verficar se os aliados perderam
                 {
                     Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
@@ -448,21 +448,21 @@ namespace RpgTelas
                 }
             }
             else
-            {
-                Pausar_Button();
+            {//Caso o inimigo morra
+                Pausar_Button();//Não deixar o jogador apertar os botões 
                 await Task.Delay(TimeSpan.FromSeconds(5));
                 MensagemDoMeio.Text = "Você ganhou a batalha. Você recebeu uma moeda. Todos os seus aliados ganharão 10 de xp";
                 InventarioC.QuantidadeMoeda++;
                 caco.GanharXP(10);
-                if(capi != null)
+                if(capi != null)//Caso objeto exista ele vai ganahr xp
                 {
                     capi.GanharXP(10);
                 }
 
-                if (co != null)
+                if (co != null)//Caso objeto exista ele vai ganahr xp
                 {
                     co.GanharXP(10);
-                    co.RecarregarVeneno();
+                    co.RecarregarVeneno();//A cobra recupera o veneno toda vez q o inimigo morre
                 }
                 await Task.Delay(TimeSpan.FromSeconds(5));
                 if(p.QualInimigo == 'i')

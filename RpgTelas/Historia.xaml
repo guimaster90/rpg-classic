@@ -13,9 +13,10 @@
     <Canvas>
         <Image x:Name="TelaDeInicio" Height="500" Width="580" Source="ms-appx:///Assets/Imagens/Fases/Inicio.gif"  Stretch="Fill" Canvas.Left="1"/>
         <Image Height="113" Canvas.Left="117" Canvas.Top="29" Width="346"  Source="ms-appx:///Assets/Imagens/Fases/Historia.png"  Stretch="Fill"/>
-        <Image Height="114" Canvas.Left="107" Canvas.Top="147" Width="341"  Source="ms-appx:///Assets/Imagens/Fases/Historia1.png"  Stretch="Fill"/>
-        <Image Height="115" Canvas.Left="111" Canvas.Top="261" Width="334"  Source="ms-appx:///Assets/Imagens/Fases/Historia2.png"  Stretch="Fill"/>
-        <Button x:Name="Proximo" Click="Proximo_Click" Canvas.Left="187" Canvas.Top="404" Height="60" Width="183">
+        <Image Height="103" Canvas.Left="107" Canvas.Top="147" Width="322"  Source="ms-appx:///Assets/Imagens/Fases/Historia1.png"  Stretch="Fill"/>
+        <Image Height="94" Canvas.Left="111" Canvas.Top="261" Width="318"  Source="ms-appx:///Assets/Imagens/Fases/Historia2.png"  Stretch="Fill"/>
+        <Image Height="50" Canvas.Left="120" Canvas.Top="368" Width="309"  Source="ms-appx:///Assets/Imagens/Fases/Historia3.png"  Stretch="Fill"/>
+        <Button x:Name="Proximo" Click="Proximo_Click" Canvas.Left="179" Canvas.Top="430" Height="60" Width="183">
             <StackPanel Orientation="Horizontal">
                 <Image  Source="ms-appx:///Assets/Imagens/Fases/Proximo.png"  Stretch="Fill" Height="50" Width="140"  />
             </StackPanel>

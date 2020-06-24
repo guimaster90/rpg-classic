@@ -118,18 +118,26 @@ namespace RpgTelas
                     this.Frame.Navigate(typeof(FaseBatalha), p); ;//Como a fase de batahla não está pronta irá passar para a tela para a Fase3
 
                 }
-                if (item.Name.ToLower().Contains("pote"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                if (item.Name.ToLower().Contains("pote"))//Caso o nome do item tiver pote, esse item não será mais visivel, além disso o jogador ganhara uma poção
                 {
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
                     InventarioC.qtdPocao++;
                 }
-                if (item.Name.ToLower().Contains("tesouro"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                if (item.Name.ToLower().Contains("tesouro"))//Caso o nome do item tiver tesouro, esse item não será mais visivel, além disso o jogador ganhara 5 moedas
                 {
                     item.Visibility = Visibility.Collapsed;// O item não será mais visivel
                     InventarioC.QuantidadeMoeda += 5;
                 }
-                if (item.Name.ToLower().Contains("vendedor"))//Caso o nome do item tiver chefe, esse item não será mais visivel, além disso o jogador será direcionado para a FaseBatalha
+                if (item.Name.ToLower().Contains("vendedor"))//Caso o nome do item tiver vendedor,o jogador será direcionado para o vendedor
                 {
+                    if (y != 0) //Caso for para cima ou para baixo
+                    {
+                        Canvas.SetTop(ImgCaco, Canvas.GetTop(ImgCaco) + y);//O ImgCaco irá recuar para cima ou para baixo
+                    }
+                    else if (x != 0)//Caso for para direita ou para esquerda
+                    {
+                        Canvas.SetLeft(ImgCaco, Canvas.GetLeft(ImgCaco) + x);//O ImgCaco irá recuar para direita ou para esquerda
+                    }
                     this.Frame.Navigate(typeof(Vendedor));
                 }
             }
