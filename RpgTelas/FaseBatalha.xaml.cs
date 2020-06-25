@@ -302,7 +302,7 @@ namespace RpgTelas
 
                 int aux;
                 aux = InimigosList[qualInimigo].ReceberDano(co.AtaqueTotal(), co.VelocidadeTotal(), co.Critico());
-                MensagemDoMeio.Text = "A capivara causou " + aux.ToString() + " de dano a(ao) " + InimigosList[qualInimigo].Nome + ". ";
+                MensagemDoMeio.Text = "A cobra causou " + aux.ToString() + " de dano a(ao) " + InimigosList[qualInimigo].Nome + ". ";
                 ReacaoInimigo();
                 AtualizarTxts();
             }
@@ -433,13 +433,13 @@ namespace RpgTelas
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
                 }
-                else if(caco.Vida <= 0 && capi.Vida <= 0 && co == null)/ Ira verficar se os aliados perderam
+                else if(caco.Vida <= 0 && capi.Vida <= 0 && co == null)// Ira verficar se os aliados perderam
                 {
                     Pausar_Button();
                     tocador.Source = null;//Irá parar a musica
                     await Task.Delay(TimeSpan.FromSeconds(5));
                     this.Frame.Navigate(typeof(GameOver));//Irá passar para a tela GameOver
-                }else if(caco.Vida <= 0 && capi.Vida <= 0 && co.Vida < 0)/ Ira verficar se os aliados perderam
+                }else if(caco.Vida <= 0 && capi.Vida <= 0 && co.Vida < 0)// Ira verficar se os aliados perderam
                 {
                     Pausar_Button();
                     tocador.Source = null;//Irá parar a musica

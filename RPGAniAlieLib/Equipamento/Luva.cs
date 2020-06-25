@@ -10,6 +10,6 @@ namespace RpgAniAlieLib.Equipamento
         /// <summary>
         /// Ataque extra que a armadura vai dar,o qual será aumentado com o nivel de armadura
         /// </summary>
-        public static int AtaqueDoItem = 5;
+        public static int AtaqueDoItem = 3;
     }
 }

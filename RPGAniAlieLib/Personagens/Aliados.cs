@@ -39,11 +39,11 @@ namespace RpgAniAlieLib.Personagens
 
         public void UparStatus()//upa os status base dependendo do nível
         {
-            this.VidaMax += 10*this.Nivel;
-            this.Def += 10*this.Nivel;
-            this.Atk += 10 * this.Nivel;
-            this.Velo += 10 * this.Nivel;
-            this.Sorte += 10 * this.Nivel;
+            this.VidaMax += 5 *this.Nivel;
+            this.Def += 5*this.Nivel;
+            this.Atk += 4 * this.Nivel;
+            this.Velo += 5 * this.Nivel;
+            this.Sorte += 3 * this.Nivel;
             this.Vida = this.VidaMax;
 
         }
