@@ -77,18 +77,21 @@ namespace RpgTelas
                 InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/Personagens/Inimigos/CapivaraMal.png", "Capivara", "Investida"));
                 qualInimigo = 0;
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
+                Voltar.IsEnabled = false;
             }
             else if (p.QualInimigo == 'o')//Se for o é o segundo boss
             {
                 InimigosList.Add(new Inimigos(caco.Nivel , "/Assets/Imagens/Personagens/Inimigos/CobraMal.png", "Cobra", "Mordida"));
                 qualInimigo = 0;
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
+                Voltar.IsEnabled = false;
             }
             else if (p.QualInimigo == 'a')//Se for a é o ultimo boss
             {
                 InimigosList.Add(new Inimigos(caco.Nivel, "/Assets/Imagens/Personagens/Inimigos/BossFinal.png", "Comandante Alien", "Laiser"));
                 qualInimigo = 0;
                 ImgInimigo.Source = new BitmapImage(new Uri(base.BaseUri, @"" + InimigosList[qualInimigo].SpriteDeBatalha));
+                Voltar.IsEnabled = false;
             }
             AtualizarTxts();
         }
